@@ -24,16 +24,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // import regularly as react
 const react_1 = __importStar(require("react"));
-const header_1 = __importDefault(require("./component/header"));
-const register_1 = __importDefault(require("./component/register"));
+const header_1 = __importDefault(require("./loginSignUp/header"));
+const register_1 = __importDefault(require("./loginSignUp/register"));
 // Setting app as functional component
 const App = () => {
     // using count as state hooks
-    const [count, setCount] = react_1.useState(0);
+    const [login, setLogin] = react_1.useState({
+        email: "",
+        password: "",
+    });
     return (react_1.default.createElement("div", null,
-        react_1.default.createElement("div", { className: "App" },
-            react_1.default.createElement(header_1.default, null),
-            react_1.default.createElement(register_1.default, null)),
+        react_1.default.createElement(header_1.default, null),
+        false ? (react_1.default.createElement("div", { className: "App" },
+            react_1.default.createElement(register_1.default, null))) : null,
         react_1.default.createElement("h1", null, "App has rendered")));
 };
 exports.default = App;
