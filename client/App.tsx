@@ -1,18 +1,28 @@
 // import regularly as react
 import React, { useState } from "react";
-import Header from "./component/header";
-import RegistrationForm from "./component/register";
+import Header from "./loginSignUp/header";
+import RegistrationForm from "./loginSignUp/register";
+
+interface loginInfo {
+  email: string;
+  password: string;
+}
 
 // Setting app as functional component
 const App: React.FC = () => {
   // using count as state hooks
-  const [count, setCount] = useState(0);
+  const [login, setLogin] = useState<loginInfo>({
+    email: "",
+    password: "",
+  });
   return (
     <div>
-      <div className="App">
-        <Header />
-        <RegistrationForm />
-      </div>
+      <Header />
+      {false ? (
+        <div className="App">
+          <RegistrationForm />
+        </div>
+      ) : null}
       <h1>App has rendered</h1>
     </div>
   );

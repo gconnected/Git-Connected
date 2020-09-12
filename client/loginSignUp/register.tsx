@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 
-const RegistrationForm: React.FC = () => {
+interface signUpInfo {
+  email: string;
+  password: string;
+}
+
+const RegistrationForm: React.FC = (props) => {
+  const [signUp, setSignUp] = useState<signUpInfo>({
+    email: "",
+    password: "",
+  });
+
   return (
     <div>
       <form>
@@ -31,6 +41,9 @@ const RegistrationForm: React.FC = () => {
             placeholder="Confirm Password"
           />
         </div>
+        <button type="submit" className="btn btn-primary">
+          Register
+        </button>
       </form>
     </div>
   );
