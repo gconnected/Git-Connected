@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open",
+    "server": "nodemon ./server/server.js",
+    "build": "webpack",
+    "dev": "concurrently --kill-others \"npm start\" \"npm run server\""
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,7 @@
     "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "concurrently": "^5.3.0",
+    "cors": "^2.8.5",
     "css-loader": "^4.3.0",
     "express": "^4.17.1",
     "got": "^11.6.2",
