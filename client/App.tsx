@@ -4,6 +4,7 @@ import Header from "./loginSignUp/header";
 import RegistrationForm from "./loginSignUp/register";
 import Search from "./searchResult/search";
 // import { whatever you want } from 'react-bootstrap';
+import UserProfile from "./userProfile/userProfile";
 
 interface loginInfo {
   email: string;
@@ -19,14 +20,17 @@ const App: React.FC = () => {
   });
   return (
     <div>
-      <h1>app has been loaded</h1>
       <Header />
       {true ? (
-        <div className="App">
+        <div className="signUp">
           <RegistrationForm />
         </div>
       ) : null}
-      <h1>App has rendered</h1>
+      {false ? (
+        <div className="profile">
+          <UserProfile />
+        </div>
+      ) : null}
 			<Search />
     </div>
   );
