@@ -34,9 +34,9 @@ const App = () => {
         password: "",
     });
     return (react_1.default.createElement("div", null,
+        react_1.default.createElement("h1", null, "app has been loaded"),
         react_1.default.createElement(header_1.default, null),
-        false ? (react_1.default.createElement("div", { className: "App" },
-            react_1.default.createElement(register_1.default, null))) : null,
-        react_1.default.createElement("h1", null, "App has rendered")));
+        true ? (react_1.default.createElement("div", { className: "App" },
+            react_1.default.createElement(register_1.default, null))) : null));
 };
 exports.default = App;
