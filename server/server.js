@@ -1,6 +1,7 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const PORT = 5000;
+
 const path = require('path');
 const bodyParser = require('body-parser');
 const api = require('./routes/api');
@@ -31,7 +32,16 @@ app.use((err, req, res, next) => {
 
 
 app.listen(PORT, () => {
+
     console.log(`Server listening on port: ${PORT}`);
 });
 
+<<<<<<< HEAD
 module.exports = app;
+=======
+
+
+
+
+module.exports = app;
+>>>>>>> a6d415f861f97093e0a25bcf6f0ab902088a6211
