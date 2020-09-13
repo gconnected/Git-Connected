@@ -26,6 +26,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const header_1 = __importDefault(require("./loginSignUp/header"));
 const register_1 = __importDefault(require("./loginSignUp/register"));
+const search_1 = __importDefault(require("./searchResult/search"));
+const results_1 = __importDefault(require("./searchResult/results"));
 // Setting app as functional component
 const App = () => {
     // using count as state hooks
@@ -37,6 +39,8 @@ const App = () => {
         react_1.default.createElement(header_1.default, null),
         false ? (react_1.default.createElement("div", { className: "App" },
             react_1.default.createElement(register_1.default, null))) : null,
-        react_1.default.createElement("h1", null, "App has rendered")));
+        react_1.default.createElement("h1", null, "App has rendered"),
+        react_1.default.createElement(search_1.default, null),
+        react_1.default.createElement(results_1.default, null)));
 };
 exports.default = App;

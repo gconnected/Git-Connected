@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Header from "./loginSignUp/header";
 import RegistrationForm from "./loginSignUp/register";
+import Search from "./searchResult/search";
+import Results from "./searchResult/results";
 
 interface loginInfo {
   email: string;
@@ -24,6 +26,8 @@ const App: React.FC = () => {
         </div>
       ) : null}
       <h1>App has rendered</h1>
+			<Search />
+			<Results />
     </div>
   );
 };
