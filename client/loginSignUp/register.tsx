@@ -11,8 +11,21 @@ const RegistrationForm: React.FC = (props) => {
     password: "",
   });
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setSignUp((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    console.log("success");
+  };
+
   return (
-    <div>
+    <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
       <form>
         <div className="form-group text-left">
           <label htmlFor="exampleEmail">Email</label>
@@ -21,6 +34,8 @@ const RegistrationForm: React.FC = (props) => {
             className="form-control"
             id="email"
             placeholder="Enter email"
+            value={signUp.email}
+            onChange={handleChange}
           />
         </div>
         <div className="form-group text-left">
@@ -30,20 +45,19 @@ const RegistrationForm: React.FC = (props) => {
             className="form-control"
             id="password"
             placeholder="Enter Password"
+            value={signUp.password}
+            onChange={handleChange}
           />
         </div>
-        <div className="form-group text-left">
-          <label htmlFor="examplePassword">Confirm Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="confirmpassword"
-            placeholder="Confirm Password"
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
+        {/* Need to add an click function that takes the values of the form and submits it to the server */}
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={handleSubmit}
+        >
           Register
         </button>
+        {console.log(signUp)}
       </form>
     </div>
   );
