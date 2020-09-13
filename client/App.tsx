@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from "./loginSignUp/header";
 import RegistrationForm from "./loginSignUp/register";
 import Search from "./searchResult/search";
-import Results from "./searchResult/results";
+// import { whatever you want } from 'react-bootstrap';
 
 interface loginInfo {
   email: string;
@@ -19,15 +19,15 @@ const App: React.FC = () => {
   });
   return (
     <div>
+      <h1>app has been loaded</h1>
       <Header />
-      {false ? (
+      {true ? (
         <div className="App">
           <RegistrationForm />
         </div>
       ) : null}
       <h1>App has rendered</h1>
 			<Search />
-			<Results />
     </div>
   );
 };

@@ -25,17 +25,26 @@ const RegistrationForm = (props) => {
         email: "",
         password: "",
     });
-    return (react_1.default.createElement("div", null,
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setSignUp((prevState) => ({
+            ...prevState,
+            [id]: value,
+        }));
+    };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("success");
+    };
+    return (react_1.default.createElement("div", { className: "card col-12 col-lg-4 login-card mt-2 hv-center" },
         react_1.default.createElement("form", null,
             react_1.default.createElement("div", { className: "form-group text-left" },
                 react_1.default.createElement("label", { htmlFor: "exampleEmail" }, "Email"),
-                react_1.default.createElement("input", { type: "email", className: "form-control", id: "email", placeholder: "Enter email" })),
+                react_1.default.createElement("input", { type: "email", className: "form-control", id: "email", placeholder: "Enter email", value: signUp.email, onChange: handleChange })),
             react_1.default.createElement("div", { className: "form-group text-left" },
                 react_1.default.createElement("label", { htmlFor: "examplePassword" }, "Enter Password"),
-                react_1.default.createElement("input", { type: "password", className: "form-control", id: "password", placeholder: "Enter Password" })),
-            react_1.default.createElement("div", { className: "form-group text-left" },
-                react_1.default.createElement("label", { htmlFor: "examplePassword" }, "Confirm Password"),
-                react_1.default.createElement("input", { type: "password", className: "form-control", id: "confirmpassword", placeholder: "Confirm Password" })),
-            react_1.default.createElement("button", { type: "submit", className: "btn btn-primary" }, "Register"))));
+                react_1.default.createElement("input", { type: "password", className: "form-control", id: "password", placeholder: "Enter Password", value: signUp.password, onChange: handleChange })),
+            react_1.default.createElement("button", { type: "submit", className: "btn btn-primary", onClick: handleSubmit }, "Register"),
+            console.log(signUp))));
 };
 exports.default = RegistrationForm;
