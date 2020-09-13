@@ -2,12 +2,13 @@
   "name": "scratch-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open",
-    "server": "nodemon ./server/server.js",
+    "start": "nodemon ./server/server.js",
+    "compile": "tsc",
     "build": "webpack",
+    "server": "webpack-dev-server --open --hot",
     "dev": "concurrently --kill-others \"npm start\" \"npm run server\""
   },
   "repository": {
@@ -31,6 +32,7 @@
     "node": "^14.8.0",
     "nodemon": "^2.0.4",
     "pg": "^8.3.3",
+    "pg-promise": "^10.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hooks": "^1.0.1",
@@ -41,8 +43,13 @@
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
+    "@tsconfig/node12": "^1.0.7",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
     "html-webpack-plugin": "^4.4.1",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
