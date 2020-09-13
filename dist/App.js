@@ -27,6 +27,8 @@ const react_1 = __importStar(require("react"));
 const header_1 = __importDefault(require("./loginSignUp/header"));
 const register_1 = __importDefault(require("./loginSignUp/register"));
 const search_1 = __importDefault(require("./searchResult/search"));
+const userProfile_1 = __importDefault(require("./userProfile/userProfile"));
+
 // Setting app as functional component
 const App = () => {
     // using count as state hooks
@@ -35,11 +37,10 @@ const App = () => {
         password: "",
     });
     return (react_1.default.createElement("div", null,
-        react_1.default.createElement("h1", null, "app has been loaded"),
         react_1.default.createElement(header_1.default, null),
-        true ? (react_1.default.createElement("div", { className: "App" },
+        true ? (react_1.default.createElement("div", { className: "signUp" },
             react_1.default.createElement(register_1.default, null))) : null,
-        react_1.default.createElement("h1", null, "App has rendered"),
-        react_1.default.createElement(search_1.default, null)));
+        false ? (react_1.default.createElement("div", { className: "profile" },
+            react_1.default.createElement(userProfile_1.default, null))) : null));
 };
 exports.default = App;
