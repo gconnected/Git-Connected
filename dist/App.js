@@ -26,7 +26,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const header_1 = __importDefault(require("./loginSignUp/header"));
 const register_1 = __importDefault(require("./loginSignUp/register"));
+const search_1 = __importDefault(require("./searchResult/search"));
 const userProfile_1 = __importDefault(require("./userProfile/userProfile"));
+
 // Setting app as functional component
 const App = () => {
     // using count as state hooks
