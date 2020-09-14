@@ -7,9 +7,9 @@ import React from "react";
 const Header: React.FC = () => {
   return (
     // Bootstrap Navbar
-    <nav className="navbar navbar-dark bg-dark fixed-top d-flex justify-content-center">
-      <div className="row col-12 text-white d-flex justify-content-center">
-        <span id="gitConnected" className="h3">gitConnected.</span>
+    <nav>
+      <div className="nav-bar-div">
+        <span id="gitConnected">gitConnected.</span>
       </div>
     </nav>
   );
