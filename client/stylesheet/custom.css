@@ -1,3 +1,31 @@
-#gitConnected {
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#gitConnected  {
 	font-family: 'Press Start 2P', cursive !important;
+	margin-top: 15px;
+
+}
+
+nav {
+	background-image: linear-gradient(to right, grey, rgb(58, 57, 57));
+	height: 50px;
+}
+
+.nav-bar-div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+
+}
+
+.forms {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 20px;
+	
 }
