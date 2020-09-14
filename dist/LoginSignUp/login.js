@@ -20,48 +20,32 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-/**Creating functional component in react.
- * This component uses signUp as our state through react hooks
- */
-const RegistrationForm = (props) => {
-    // React Hooks assigning signUpInfo as type to state
-    // signUp -> state and setSignUp -> setState()
-    const [signUp, setSignUp] = react_1.useState({
+const Login = () => {
+    const [loginInfo, setLogin] = react_1.useState({
         email: "",
-        password: "",
+        password: ""
     });
-    /**
-     * Function to handle event changes in text boxes.
-     * @param e: needs to be declared with React.ChangeEvent type pointed at HTMLInputElement.
-     */
     const handleChange = (e) => {
-        // const id = e.target.id --> input id
-        // const value - e.target.value --> input value
         const { id, value } = e.target;
-        setSignUp((prevState) => ({
+        setLogin((prevState) => ({
             ...prevState,
             [id]: value,
         }));
     };
-    /**
-     * Function to handle mouse events for submitting the form.
-     * @param event: TypeScript will not allow onClick events to be tied to the e parameter.
-     * Specified with event and declared with React.MouseEvent type pointed at HTMLElement.
-     */
     const handleSubmit = (event) => {
         event.preventDefault();
         // INSERT AXIOS REQUEST
         console.log("success");
     };
-    return (react_1.default.createElement("div", { className: "container card col-12 col-lg-4 justify-content-center t-2 hv-center" },
+    return (react_1.default.createElement("div", { id: "login", className: "container card mt-5 col-12 col-lg-4 " },
         react_1.default.createElement("div", { className: "row col-12 mt-3 d-flex text-grey" },
-            react_1.default.createElement("span", { className: "h3" }, "Register")),
+            react_1.default.createElement("span", { className: "h3" }, "login")),
         react_1.default.createElement("form", null,
-            react_1.default.createElement("div", { className: "form-group text-left " },
-                react_1.default.createElement("input", { type: "email", className: "form-control", id: "email", placeholder: "Enter email", value: signUp.email, onChange: handleChange })),
             react_1.default.createElement("div", { className: "form-group text-left" },
-                react_1.default.createElement("input", { type: "password", className: "form-control", id: "password", placeholder: "Enter Password", value: signUp.password, onChange: handleChange })),
+                react_1.default.createElement("input", { type: "email", className: "form-control", id: "email", placeholder: "Enter email", value: loginInfo.email, onChange: handleChange })),
+            react_1.default.createElement("div", { className: "form-group text-left" },
+                react_1.default.createElement("input", { type: "password", className: "form-control", id: "password", placeholder: "Enter password", value: loginInfo.password, onChange: handleChange })),
             react_1.default.createElement("button", { type: "submit", className: "mb-3 btn btn-success", onClick: handleSubmit }, "Register"),
-            console.log(signUp))));
+            console.log(loginInfo))));
 };
-exports.default = RegistrationForm;
+exports.default = Login;

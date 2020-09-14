@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 /**Setting type of state and its components.
  * Set to the same shape as the state.
@@ -11,9 +12,11 @@ interface profileInfo {
   state: string;
   country: string;
   company_name: string;
+  // past_companies: array
   past_companies: string;
   job: string;
   years_exp: number;
+  // techstack: array
   techstack: string;
   profile_pic: any;
 }
@@ -57,7 +60,31 @@ const UserProfile: React.FC = () => {
    */
   const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    console.log("Profile successfully created");
+    // INSERT AXIOS REQUEST
+    axios
+      .post("/createUser", profile)
+      .then(() =>
+        alert(
+          "You are now connected!! \r\n You can now search for connections!!"
+        )
+      )
+      .then(() => console.log("success!"))
+      .catch((err) => console.error(err));
+    // Setting form back to empty values
+    setProfile({
+      firstName: "",
+      lastName: "",
+      birthDate: "",
+      city: "",
+      state: "",
+      country: "",
+      company_name: "",
+      past_companies: "",
+      job: "",
+      years_exp: 0,
+      techstack: "",
+      profile_pic: "",
+    });
   };
 
   return (
