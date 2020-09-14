@@ -70,6 +70,7 @@ const UserProfile: React.FC = () => {
       )
       .then(() => console.log("success!"))
       .catch((err) => console.error(err));
+    // Setting form back to empty values
     setProfile({
       firstName: "",
       lastName: "",
