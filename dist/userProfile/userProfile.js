@@ -24,7 +24,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const axios_1 = __importDefault(require("axios"));
-/**Creating functional component in react.
+/** Creating functional component in react.
  * This component uses profile as our state through react hooks
  */
 const UserProfile = () => {
@@ -78,24 +78,21 @@ const UserProfile = () => {
             profile_pic: "",
         });
     };
-
     return (react_1.default.createElement("div", { id: "createProfileContainer" },
         react_1.default.createElement("div", { id: "createProfileHeader" },
             react_1.default.createElement("span", { id: "createProfileIntro" }, "Tell us a little more about yourself...")),
         react_1.default.createElement("div", null,
             react_1.default.createElement("form", { id: "createProfileForm" },
-                react_1.default.createElement("input", { type: "firstName", id: "firstName", placeholder: "First Name", value: profile.firstName, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "lastName", id: "lastName", placeholder: "Last Name", value: profile.lastName, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "birthDate", id: "birthDate", placeholder: "Birth Date", value: profile.birthDate, onChange: handleChange }),
+                react_1.default.createElement("input", { type: "firstname", id: "firstname", placeholder: "First Name", value: profile.firstname, onChange: handleChange }),
+                react_1.default.createElement("input", { type: "lastname", id: "lastname", placeholder: "Last Name", value: profile.lastname, onChange: handleChange }),
+                react_1.default.createElement("input", { type: "birthdate", id: "birthdate", placeholder: "Birth Date - MM/DD/YYYY", value: profile.birthdate, onChange: handleChange }),
                 react_1.default.createElement("input", { type: "city", id: "city", placeholder: "City", value: profile.city, onChange: handleChange }),
                 react_1.default.createElement("input", { type: "state", className: "form-control", id: "state", placeholder: "State", value: profile.state, onChange: handleChange }),
                 react_1.default.createElement("input", { type: "country", id: "country", placeholder: "Country", value: profile.country, onChange: handleChange }),
                 react_1.default.createElement("input", { type: "company_name", id: "company_name", placeholder: "Company", value: profile.company_name, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "past_companies", id: "past_companies", placeholder: "Past Company", value: profile.past_companies, onChange: handleChange }),
                 react_1.default.createElement("input", { type: "job", id: "job", placeholder: "Job", value: profile.job, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "years_exp", id: "years_exp", placeholder: "Years Experience", value: profile.years_exp, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "techstack", id: "techstack", placeholder: "Stack", value: profile.techstack, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "profile_pic", id: "profile_pic", placeholder: "Profile Picture", value: profile.profile_pic, onChange: handleChange }))),
+                react_1.default.createElement("input", { type: "years_exp", id: "years_exp", placeholder: "Years of Experience", value: profile.years_exp, onChange: handleChange }),
+                react_1.default.createElement("input", { type: "profile_pic", id: "profile_pic", placeholder: "Profile Picture - URL", value: profile.profile_pic, onChange: handleChange }))),
         react_1.default.createElement("div", { id: "createButtonContainer" },
             react_1.default.createElement("button", { type: "submit", onClick: handleSubmit, id: "createButton", form: "createProfileForm" }, "Git Connected!")),
         console.log(profile)));

@@ -186,7 +186,7 @@ const Search = () => {
      * our code remains DRY
      */
     const renderTableHeader = () => {
-        const headerElement = ['', 'First Name', 'Last Name', 'City', 'State', 'Country', 'Current Company', 'Past Company', 'Job Position', 'Years of Experience', 'Tech Stack'];
+        const headerElement = ['First Name', 'Last Name', 'City', 'State', 'Country', 'Current Company', 'Job Position', 'Years of Experience', 'Git Connected!'];
         return headerElement.map((element, index) => {
             return (react_1.default.createElement("th", { key: index }, element.toUpperCase()));
         });
@@ -203,7 +203,6 @@ const Search = () => {
     const renderTableBody = () => {
         return resultArray.usersArray.map((userObj) => {
             return (react_1.default.createElement("tr", null,
-                react_1.default.createElement("td", null, userObj.resultProfilePic),
                 react_1.default.createElement("td", null, userObj.resultFirstName),
                 react_1.default.createElement("td", null, userObj.resultLastName),
                 react_1.default.createElement("td", null, userObj.resultCity),
@@ -217,29 +216,29 @@ const Search = () => {
         });
     };
     // Search FC will be rendering the following return statement
-    return (react_1.default.createElement("div", { id: "outerSearchContainer", className: "container mt-3 d-flex justify-content-center flex-column" },
-        react_1.default.createElement("div", { id: "innerSearchContainer", className: "container mt-3 d-flex justify-content-center" },
-            react_1.default.createElement("form", { id: "searchBar", onSubmit: searchStart, className: "d-flex justify-content-center flex-column" },
-                react_1.default.createElement("select", { name: "Company Search", id: "searchCompany", onChange: companyChange, defaultValue: "Company", className: "custom-select mb-3" },
+    return (react_1.default.createElement("div", { id: "outerSearchContainer" },
+        react_1.default.createElement("div", { id: "innerSearchContainer" },
+            react_1.default.createElement("form", { id: "searchBar", onSubmit: searchStart },
+                react_1.default.createElement("select", { name: "Company Search", id: "searchCompany", onChange: companyChange, defaultValue: "Company" },
                     react_1.default.createElement("option", { value: "", hidden: true }, "Company"),
                     react_1.default.createElement("option", { value: "Apple" }, "Apple"),
                     react_1.default.createElement("option", { value: "Google" }, "Google"),
                     react_1.default.createElement("option", { value: "Instagram" }, "Instagram"),
                     mapCompanies(),
                     react_1.default.createElement("option", { value: "Other" }, "Other")),
-                react_1.default.createElement("select", { name: "Job Search", id: "searchJob", onChange: jobChange, defaultValue: "Job Position", className: "custom-select mb-3" },
+                react_1.default.createElement("select", { name: "Job Search", id: "searchJob", onChange: jobChange, defaultValue: "Job Position" },
                     react_1.default.createElement("option", { value: "", hidden: true }, "Job Position"),
                     react_1.default.createElement("option", { value: "Software Engineer" }, "Software Engineer"),
                     react_1.default.createElement("option", { value: "Product Engineer" }, "Product Engineer"),
                     react_1.default.createElement("option", { value: "Product Designer" }, "Product Designer"),
                     react_1.default.createElement("option", { value: "CTO" }, "CTO"),
                     mapJobs()),
-                react_1.default.createElement("input", { type: "submit", id: "searchButton", className: "btn mb-3 btn-success", value: "Search" }),
-                react_1.default.createElement("input", { type: "reset", id: "resetButton", className: "btn mb-5" }),
+                react_1.default.createElement("input", { type: "submit", id: "searchButton", value: "Search" }),
+                react_1.default.createElement("input", { type: "reset", id: "resetButton" }),
                 console.log(searchInfo))),
-        react_1.default.createElement("div", { id: "resultsContainer", className: "d-flex justify-content-center" },
-            react_1.default.createElement("table", { id: "resultTable", className: "table table-hover" },
-                react_1.default.createElement("thead", { className: "thead-dark text-center" }, renderTableHeader()),
-                react_1.default.createElement("tbody", { className: "text-center" }, renderTableBody())))));
+        react_1.default.createElement("div", { id: "resultsContainer" },
+            react_1.default.createElement("table", { id: "resultTable" },
+                react_1.default.createElement("thead", null, renderTableHeader()),
+                react_1.default.createElement("tbody", null, renderTableBody())))));
 };
 exports.default = Search;

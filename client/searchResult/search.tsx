@@ -240,7 +240,7 @@ const Search: React.FC = () => {
 	 * our code remains DRY
 	 */
 	const renderTableHeader = () => {
-		const headerElement = ['', 'First Name', 'Last Name', 'City', 'State', 'Country', 'Current Company', 'Past Company', 'Job Position', 'Years of Experience', 'Tech Stack'];
+		const headerElement = ['First Name', 'Last Name', 'City', 'State', 'Country', 'Current Company', 'Job Position', 'Years of Experience', 'Git Connected!'];
 
 		return headerElement.map((element, index) => {
 			return (
@@ -262,7 +262,6 @@ const Search: React.FC = () => {
 		return resultArray.usersArray.map((userObj) => {
 			return (
 				<tr>
-					<td>{userObj.resultProfilePic}</td>
 					<td>{userObj.resultFirstName}</td>
 					<td>{userObj.resultLastName}</td>
 					<td>{userObj.resultCity}</td>
@@ -280,13 +279,13 @@ const Search: React.FC = () => {
 
 	// Search FC will be rendering the following return statement
 	return (
-		<div id="outerSearchContainer" className="container mt-3 d-flex justify-content-center flex-column">
+		<div id="outerSearchContainer">
 			{/* Search Container */}
-			<div id="innerSearchContainer" className="container mt-3 d-flex justify-content-center">
+			<div id="innerSearchContainer">
 				{/* Form Tag that has an onSubmit attribute that will take all our select tag values once the submit input tag has been clicked on */}
-				<form id="searchBar" onSubmit={searchStart} className="d-flex justify-content-center flex-column">
+				<form id="searchBar" onSubmit={searchStart}>
 					{/* Company Name from Database */}
-					<select name="Company Search" id="searchCompany" onChange={companyChange} defaultValue="Company" className="custom-select mb-3">
+					<select name="Company Search" id="searchCompany" onChange={companyChange} defaultValue="Company">
 						<option value="" hidden>Company</option>
 						<option value="Apple">Apple</option>
 						<option value="Google">Google</option>
@@ -295,7 +294,7 @@ const Search: React.FC = () => {
 						<option value="Other">Other</option>
 					</select>
 					{/* Job Position */}
-					<select name="Job Search" id="searchJob" onChange={jobChange} defaultValue="Job Position" className="custom-select mb-3">
+					<select name="Job Search" id="searchJob" onChange={jobChange} defaultValue="Job Position">
 						<option value="" hidden>Job Position</option>
 						<option value="Software Engineer">Software Engineer</option>
 						<option value="Product Engineer">Product Engineer</option>
@@ -304,20 +303,20 @@ const Search: React.FC = () => {
 						{mapJobs()}
 					</select>
 					{/* Submit Input tag that will initate the form's onSubmit attribute function: searchStart with the post request */}
-					<input type="submit" id="searchButton" className="btn mb-3 btn-success" value="Search"/>
+					<input type="submit" id="searchButton" value="Search"/>
 					{/* Reset Input tag that will change all the select values back to default */}
-					<input type="reset" id="resetButton" className="btn mb-5" />
+					<input type="reset" id="resetButton"/>
 					{console.log(searchInfo)}
 				</form>
 				{/* NEED TO INSERT SOME CONDITIONAL LOGIC, ONCE WE GET A SUCCESSFUL RESPONSE FROM OUR AXIOS POST REQUEST FROM OUR SEARCHSTART FUNCTION AROUND LINE 90 */}
 			</div>
 			{/* Results Container */}
-			<div id="resultsContainer" className="d-flex justify-content-center">
-				<table id="resultTable" className="table table-hover">
-					<thead className="thead-dark text-center">
+			<div id="resultsContainer">
+				<table id="resultTable">
+					<thead>
 						{renderTableHeader()}
 					</thead>
-					<tbody className="text-center">
+					<tbody>
 						{renderTableBody()}
 					</tbody>
 				</table>

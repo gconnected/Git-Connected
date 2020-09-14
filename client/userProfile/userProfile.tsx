@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-/**Setting type of state and its components.
+/** Setting type of state and its components.
  * Set to the same shape as the state.
  */
 interface profileInfo {
@@ -17,7 +17,7 @@ interface profileInfo {
   profile_pic: any;
 }
 
-/**Creating functional component in react.
+/** Creating functional component in react.
  * This component uses profile as our state through react hooks
  */
 const UserProfile: React.FC = () => {
@@ -83,26 +83,26 @@ const UserProfile: React.FC = () => {
 			<form id="createProfileForm">
 						{/* First Name */}
 							<input
-								type="firstName"
-								id="firstName"
+								type="firstname"
+								id="firstname"
 								placeholder="First Name"
-								value={profile.firstName}
+								value={profile.firstname}
 								onChange={handleChange}
 							/>
 						{/* Last Name */}
 							<input
-								type="lastName"
-								id="lastName"
+								type="lastname"
+								id="lastname"
 								placeholder="Last Name"
-								value={profile.lastName}
+								value={profile.lastname}
 								onChange={handleChange}
 							/>
 						{/* Birth Date */}
 							<input
-								type="birthDate"
-								id="birthDate"
-								placeholder="Birth Date"
-								value={profile.birthDate}
+								type="birthdate"
+								id="birthdate"
+								placeholder="Birth Date - MM/DD/YYYY"
+								value={profile.birthdate}
 								onChange={handleChange}
 							/>
 						{/* City */}
@@ -150,7 +150,7 @@ const UserProfile: React.FC = () => {
 							<input
 								type="years_exp"
 								id="years_exp"
-								placeholder="Years Experience"
+								placeholder="Years of Experience"
 								value={profile.years_exp}
 								onChange={handleChange}
 							/>
@@ -158,7 +158,7 @@ const UserProfile: React.FC = () => {
 							<input
 								type="profile_pic"
 								id="profile_pic"
-								placeholder="Profile Picture"
+								placeholder="Profile Picture - URL"
 								value={profile.profile_pic}
 								onChange={handleChange}
 							/>
