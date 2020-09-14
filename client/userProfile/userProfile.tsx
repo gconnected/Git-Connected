@@ -5,19 +5,15 @@ import axios from "axios";
  * Set to the same shape as the state.
  */
 interface profileInfo {
-  firstName: string;
-  lastName: string;
-  birthDate: string;
+  firstname: string;
+  lastname: string;
+  birthdate: string;
   city: string;
   state: string;
   country: string;
   company_name: string;
-  // past_companies: array
-  past_companies: string;
   job: string;
   years_exp: number;
-  // techstack: array
-  techstack: string;
   profile_pic: any;
 }
 
@@ -27,17 +23,15 @@ interface profileInfo {
 const UserProfile: React.FC = () => {
   // React Hooks assigning signUpInfo as type to state
   const [profile, setProfile] = useState<profileInfo>({
-    firstName: "",
-    lastName: "",
-    birthDate: "",
+    firstname: "",
+    lastname: "",
+    birthdate: "",
     city: "",
     state: "",
     country: "",
     company_name: "",
-    past_companies: "",
     job: "",
     years_exp: 0,
-    techstack: "",
     profile_pic: "",
   });
 
@@ -62,27 +56,20 @@ const UserProfile: React.FC = () => {
     event.preventDefault();
     // INSERT AXIOS REQUEST
     axios
-      .post("/createUser", profile)
-      .then(() =>
-        alert(
-          "You are now connected!! \r\n You can now search for connections!!"
-        )
-      )
+      .post("/api/createUser", profile)
       .then(() => console.log("success!"))
       .catch((err) => console.error(err));
     // Setting form back to empty values
     setProfile({
-      firstName: "",
-      lastName: "",
-      birthDate: "",
+      firstname: "",
+      lastname: "",
+      birthdate: "",
       city: "",
       state: "",
       country: "",
       company_name: "",
-      past_companies: "",
       job: "",
       years_exp: 0,
-      techstack: "",
       profile_pic: "",
     });
   };
@@ -96,33 +83,33 @@ const UserProfile: React.FC = () => {
         {/* First Name */}
         <div className="form-group text-left">
           <input
-            type="firstName"
+            type="firstname"
             className="form-control"
-            id="firstName"
+            id="firstname"
             placeholder="First Name"
-            value={profile.firstName}
+            value={profile.firstname}
             onChange={handleChange}
           />
         </div>
         {/* Last Name */}
         <div className="form-group text-left">
           <input
-            type="lastName"
+            type="lastname"
             className="form-control"
-            id="lastName"
+            id="lastname"
             placeholder="Last Name"
-            value={profile.lastName}
+            value={profile.lastname}
             onChange={handleChange}
           />
         </div>
         {/* Birth Date */}
         <div className="form-group text-left">
           <input
-            type="birthDate"
+            type="birthdate"
             className="form-control"
-            id="birthDate"
-            placeholder="Birth Date"
-            value={profile.birthDate}
+            id="birthdate"
+            placeholder="Month Day, Year"
+            value={profile.birthdate}
             onChange={handleChange}
           />
         </div>
@@ -170,17 +157,6 @@ const UserProfile: React.FC = () => {
             onChange={handleChange}
           />
         </div>
-        {/* Past Company */}
-        <div className="form-group text-left">
-          <input
-            type="past_companies"
-            className="form-control"
-            id="past_companies"
-            placeholder="Past Company"
-            value={profile.past_companies}
-            onChange={handleChange}
-          />
-        </div>
         {/* Job */}
         <div className="form-group text-left">
           <input
@@ -200,17 +176,6 @@ const UserProfile: React.FC = () => {
             id="years_exp"
             placeholder="Years Experience"
             value={profile.years_exp}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Stack */}
-        <div className="form-group text-left">
-          <input
-            type="techstack"
-            className="form-control"
-            id="techstack"
-            placeholder="Stack"
-            value={profile.techstack}
             onChange={handleChange}
           />
         </div>
