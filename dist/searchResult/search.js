@@ -59,6 +59,7 @@ const Search = () => {
         resultTechStack: "",
         resultYearsExp: 0,
     });
+    const [results, setResults] = react_1.useState([]);
     const [dropDownOptions, setDropDownOptions] = react_1.useState({
         optionsCompany: [],
         optionsJob: [],
@@ -66,8 +67,10 @@ const Search = () => {
     // Runs just like componentDidMount but a lot more flexible
     react_1.useEffect(() => {
         // get request to get all the company names from the company table in SQL db
-        axios_1.default.get('/companies')
+        axios_1.default
+            .get("/api/getCompanies")
             .then((result) => {
+            console.log(result);
             // updating our dropDownOptions state with our returned array from our request
             setDropDownOptions((prevState) => ({
                 ...prevState,
@@ -75,10 +78,11 @@ const Search = () => {
             }));
         })
             .catch((err) => {
-            console.log('Error in App Axios Get Request for /companys', err);
+            console.log("Error in App Axios Get Request for /getCompany", err);
         });
         // get request to get all the job names from the user table in SQL db
-        axios_1.default.get('/jobs')
+        axios_1.default
+            .get("/api/getJobs")
             .then((result) => {
             // updating our dropDownOptions state with our returned array from our request
             setDropDownOptions((prevState) => ({
@@ -87,7 +91,7 @@ const Search = () => {
             }));
         })
             .catch((err) => {
-            console.log('Error in App Axios Get Request for /jobs', err);
+            console.log("Error in App Axios Get Request for /getJobs", err);
         });
     }, []);
     /**
@@ -104,13 +108,13 @@ const Search = () => {
      */
     const mapCompanies = () => {
         return dropDownOptions.optionsCompany.map((company) => {
-            return (react_1.default.createElement("option", { value: company }, company));
+            return (react_1.default.createElement("option", { value: company["company_name"] }, company["company_name"]));
         });
     };
     // same concept as the function above
     const mapJobs = () => {
         return dropDownOptions.optionsJob.map((job) => {
-            return (react_1.default.createElement("option", { value: job }, job));
+            return react_1.default.createElement("option", { value: job["job"] }, job["job"]);
         });
     };
     /**
@@ -128,7 +132,7 @@ const Search = () => {
             ...prevState,
             searchCompany: value,
         }));
-        console.log('Company Search Option Changed');
+        console.log("Company Search Option Changed");
     };
     /**
      * Same Event Handler but targeting a different Selet Tag and updating a different property in searchInfo state
@@ -144,7 +148,7 @@ const Search = () => {
             ...prevState,
             searchJob: value,
         }));
-        console.log('Job Search Option Changed');
+        console.log("Job Search Option Changed");
     };
     /**
      * Similar Event Handler that targets the Form tag and will make an
@@ -160,25 +164,13 @@ const Search = () => {
      */
     const searchStart = (event) => {
         event.preventDefault();
-        console.log('Search Button Clicked');
+        console.log("Search Button Clicked");
         // NEED TO EDIT THE result.data.(propertynames) => PLACEHOLDERS
         // BASED PLACEHOLDERS OFF OF SQL COLUMN NAMES
-        axios_1.default.post('/search', searchInfo)
-            .then((result) => {
-            setResultInfo((prevState) => ({
-                ...prevState,
-                resultProfilePic: result.data["profile_pic"],
-                resultFirstName: result.data.firstname,
-                resultLastName: result.data.lastname,
-                resultCity: result.data.city,
-                resultState: result.data.state,
-                resultCountry: result.data.country,
-                resultCompanyName: result.data["company_name"],
-                resultPastCompanyName: result.data["past_companies"],
-                resultJob: result.data.job,
-                resultTechStack: result.data.techStack,
-                resultYearsExp: result.data["year_exp"],
-            }));
+        axios_1.default.post("/api/search", searchInfo).then((data) => {
+            console.log("data: ", data.data);
+            setResults([...data.data]);
+            return console.log("results state: ", results);
         });
     };
     /**
@@ -186,9 +178,18 @@ const Search = () => {
      * our code remains DRY
      */
     const renderTableHeader = () => {
-        const headerElement = ['', 'First Name', 'Last Name', 'City', 'State', 'Country', 'Current Company', 'Past Company', 'Job Position', 'Years of Experience', 'Tech Stack'];
+        const headerElement = [
+            "First Name",
+            "Last Name",
+            "City",
+            "State",
+            "Country",
+            "Current Company",
+            "Job Position",
+            "Years of Experience",
+        ];
         return headerElement.map((element, index) => {
-            return (react_1.default.createElement("th", { key: index }, element.toUpperCase()));
+            return react_1.default.createElement("th", { key: index }, element.toUpperCase());
         });
     };
     /**
@@ -201,19 +202,16 @@ const Search = () => {
      * the content drawn from each element in the iterated array
      */
     const renderTableBody = () => {
-        return resultArray.usersArray.map((userObj) => {
+        return results.map((userObj) => {
             return (react_1.default.createElement("tr", null,
-                react_1.default.createElement("td", null, userObj.resultProfilePic),
-                react_1.default.createElement("td", null, userObj.resultFirstName),
-                react_1.default.createElement("td", null, userObj.resultLastName),
-                react_1.default.createElement("td", null, userObj.resultCity),
-                react_1.default.createElement("td", null, userObj.resultState),
-                react_1.default.createElement("td", null, userObj.resultCountry),
-                react_1.default.createElement("td", null, userObj.resultCompanyName),
-                react_1.default.createElement("td", null, userObj.resultPastCompanyName),
-                react_1.default.createElement("td", null, userObj.resultJob),
-                react_1.default.createElement("td", null, userObj.resultYearsExp),
-                react_1.default.createElement("td", null, userObj.resultTechStack)));
+                react_1.default.createElement("td", null, userObj.firstname),
+                react_1.default.createElement("td", null, userObj.lastname),
+                react_1.default.createElement("td", null, userObj.city),
+                react_1.default.createElement("td", null, userObj.state),
+                react_1.default.createElement("td", null, userObj.country),
+                react_1.default.createElement("td", null, userObj["company_name"]),
+                react_1.default.createElement("td", null, userObj.job),
+                react_1.default.createElement("td", null, userObj["years_exp"])));
         });
     };
     // Search FC will be rendering the following return statement
@@ -222,17 +220,10 @@ const Search = () => {
             react_1.default.createElement("form", { id: "searchBar", onSubmit: searchStart, className: "d-flex justify-content-center flex-column" },
                 react_1.default.createElement("select", { name: "Company Search", id: "searchCompany", onChange: companyChange, defaultValue: "Company", className: "custom-select mb-3" },
                     react_1.default.createElement("option", { value: "", hidden: true }, "Company"),
-                    react_1.default.createElement("option", { value: "Apple" }, "Apple"),
-                    react_1.default.createElement("option", { value: "Google" }, "Google"),
-                    react_1.default.createElement("option", { value: "Instagram" }, "Instagram"),
                     mapCompanies(),
                     react_1.default.createElement("option", { value: "Other" }, "Other")),
                 react_1.default.createElement("select", { name: "Job Search", id: "searchJob", onChange: jobChange, defaultValue: "Job Position", className: "custom-select mb-3" },
                     react_1.default.createElement("option", { value: "", hidden: true }, "Job Position"),
-                    react_1.default.createElement("option", { value: "Software Engineer" }, "Software Engineer"),
-                    react_1.default.createElement("option", { value: "Product Engineer" }, "Product Engineer"),
-                    react_1.default.createElement("option", { value: "Product Designer" }, "Product Designer"),
-                    react_1.default.createElement("option", { value: "CTO" }, "CTO"),
                     mapJobs()),
                 react_1.default.createElement("input", { type: "submit", id: "searchButton", className: "btn mb-3 btn-success", value: "Search" }),
                 react_1.default.createElement("input", { type: "reset", id: "resetButton", className: "btn mb-5" }),

@@ -59,26 +59,26 @@ fileController.createUser = (req, res, next) => {
 fileController.searchUser = (req, res, next) => {
   console.log(req.query);
   let searched, searchInput;
-  const { searchCompany, searchJob } = req.query;
+  const { searchCompany, searchJob } = req.body;
   // const searchInput = [searchCompany, searchJob];
   console.log("searchCompany:", searchCompany, "searchJob:", searchJob);
   if (searchCompany && !searchJob) {
     console.log("first conditional consolelog!");
     searchInput = [searchCompany];
-    searched = `SELECT users.* WHERE company_name = $1`;
+    searched = `SELECT * FROM users WHERE company_name = $1`;
   } else if (!searchCompany && searchJob) {
     console.log("second conditional consolelog!");
     searchInput = [searchJob];
-    searched = `SELECT users.* WHERE job = $1`;
+    searched = `SELECT * FROM users WHERE job = $1`;
   } else if (searchCompany && searchJob) {
     console.log("third conditional consolelog!");
     // searchInput.push(searchCompany, searchJob);
     searchInput = [searchCompany, searchJob];
-    searched = `SELECT users.* WHERE company_name $1 AND job = $2`;
+    searched = `SELECT * FROM users WHERE company_name = $1 AND job = $2`;
   } else {
     console.log("something");
   }
-  console.log("searchJob console log:", searchJob, searchInput);
+  console.log("input:", searchInput);
 
   db.query(searched, searchInput)
     .then((data) => {
