@@ -23,7 +23,7 @@ const react_1 = __importStar(require("react"));
 const Login = () => {
     const [loginInfo, setLogin] = react_1.useState({
         email: "",
-        password: ""
+        password: "",
     });
     const handleChange = (e) => {
         const { id, value } = e.target;

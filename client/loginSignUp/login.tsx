@@ -8,18 +8,17 @@ interface loginInfo {
 const Login: React.FC = () => {
   const [loginInfo, setLogin] = useState<loginInfo>({
     email: "",
-    password: ""
+    password: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-   
     const { id, value } = e.target;
     setLogin((prevState) => ({
       ...prevState,
       [id]: value,
     }));
   };
-  
+
   const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     // INSERT AXIOS REQUEST

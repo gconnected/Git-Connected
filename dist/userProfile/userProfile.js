@@ -30,17 +30,15 @@ const axios_1 = __importDefault(require("axios"));
 const UserProfile = () => {
     // React Hooks assigning signUpInfo as type to state
     const [profile, setProfile] = react_1.useState({
-        firstName: "",
-        lastName: "",
-        birthDate: "",
+        firstname: "",
+        lastname: "",
+        birthdate: "",
         city: "",
         state: "",
         country: "",
         company_name: "",
-        past_companies: "",
         job: "",
         years_exp: 0,
-        techstack: "",
         profile_pic: "",
     });
     /**
@@ -63,26 +61,24 @@ const UserProfile = () => {
         event.preventDefault();
         // INSERT AXIOS REQUEST
         axios_1.default
-            .post("/createUser", profile)
-            .then(() => alert("You are now connected!! \r\n You can now search for connections!!"))
+            .post("/api/createUser", profile)
             .then(() => console.log("success!"))
             .catch((err) => console.error(err));
         // Setting form back to empty values
         setProfile({
-            firstName: "",
-            lastName: "",
-            birthDate: "",
+            firstname: "",
+            lastname: "",
+            birthdate: "",
             city: "",
             state: "",
             country: "",
             company_name: "",
-            past_companies: "",
             job: "",
             years_exp: 0,
-            techstack: "",
             profile_pic: "",
         });
     };
+
     return (react_1.default.createElement("div", { id: "createProfileContainer" },
         react_1.default.createElement("div", { id: "createProfileHeader" },
             react_1.default.createElement("span", { id: "createProfileIntro" }, "Tell us a little more about yourself...")),
