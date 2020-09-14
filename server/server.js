@@ -8,7 +8,6 @@ const api = require('./routes/api');
 const cors = require('cors');
 
 app.use(cors());
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', api)
@@ -36,12 +35,4 @@ app.listen(PORT, () => {
     console.log(`Server listening on port: ${PORT}`);
 });
 
-<<<<<<< HEAD
 module.exports = app;
-=======
-
-
-
-
-module.exports = app;
->>>>>>> a6d415f861f97093e0a25bcf6f0ab902088a6211
