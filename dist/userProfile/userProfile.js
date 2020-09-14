@@ -57,6 +57,7 @@ const UserProfile = () => {
      */
     const handleSubmit = (event) => {
         event.preventDefault();
+        // INSERT AXIOS REQUEST
         console.log("Profile successfully created");
     };
     return (react_1.default.createElement("div", { className: "container col-20 justify-item-center mt-5" },

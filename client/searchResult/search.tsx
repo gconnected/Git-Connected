@@ -1,25 +1,41 @@
 // ******IMPORTANT TO DO LIST REMINDERS********
 // - NEED TO UPDATE THE END ROUTES FOR ALL AXIOS REQUESTS
 
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { stat } from 'fs';
 
-// establishing the data types within our searchInfo state
+/**
+ * TS: interface searchInfo: lets us initialize the data type for our searchInfo state
+ */
 interface searchInfo {
 	searchCompany: string,
 	searchJob: string,
 }
 
-// establishing the data type within our resultArray state
-// resultArray will only have one property named usersArray that has an array as a value
-// the array value will have elements that are objects that follow the data types shown in "interface resultInfo" approx line 25
+/**
+ * TS: interface resultArray: lets us initialize the data type
+ * for our resultArray state
+ * 
+ * In this case, we are specifying that resultArray will have one property
+ * and its value's data type is an array (Array<resultInfo>)
+ * 
+ * <resultInfo> is another interface that determines the model that 
+ * the elements within that array will follow
+ * 
+ * In this case, in our usersArray value, we will have an array
+ * that has elements that are objects and each object will need to
+ * adhere to our interface reultInfo
+ */
 interface resultArray {
 	usersArray: Array<resultInfo>,
 }
 
-// establishing the data types within our resultInfo state
+/**
+ * TS: interface resultInfo: specifies our that each element will contain
+ * the following property names and their values must adhere to the 
+ * mentioned data type entered below
+ */
 interface resultInfo {
 	// profilePic? string => Url, HTMLImageElement => <img>, File => <input>
 	resultProfilePic?: string,
@@ -35,18 +51,31 @@ interface resultInfo {
 	resultYearsExp: number,
 }
 
-// establishing the data types within out dropDownOptions state
-// each property value is going to be an array and the data types of the elements strings (defined in the < >)
+/**
+ * TS: interface dropDownOptions: determines the data type we are
+ * expecting in each respective property name from our http requests
+ * from the SQL db
+ * 
+ * In this case, each property value is an array with elements that
+ * only have string data types which are defined between < >
+ */
 interface dropDownOptions {
 	optionsCompany: Array<string>,
 	optionsJob: Array<string>,
 }
 
-// declaring a functional component labeled Search (TS: React.FC)
+/**
+ * TS: React.FC => it is a label to confirm that our Search Function is a React Functional Component
+ */
 const Search: React.FC = () => {
-	// React Hooks: searchInfo => state, setSearchInfo => setState
-	// useState initializes our starting values in our searchInfo state
-	// <searchInfo> is like a schema that the searchInfo values need to adhere to which was already declared back in line 6 in "interface searchInfo"
+	/**
+	 * React Hooks: searchInfo => state, setSearchInfo => setState
+	 * useState initializes our starting values in our searchInfo state
+	 * 
+	 * <searchInfo> is like a schema that the searchInfo values 
+	 * need to adhere to which was already declared back in line 6 
+	 * in "interface searchInfo"
+	 */
 	const [ searchInfo, setSearchInfo ] = useState<searchInfo>({
 		searchCompany: "",
 		searchJob: "",
@@ -55,6 +84,7 @@ const Search: React.FC = () => {
 	const [ resultArray, setResultArray ] = useState<resultArray>({
 		usersArray: [],
 	})
+
 	// Same thing here, but we have another state labeled resultInfo
 	const [ resultInfo, setResultInfo ] = useState<resultInfo>({
 		resultProfilePic: "",
@@ -104,11 +134,20 @@ const Search: React.FC = () => {
 			});
 
 	}, []);
-	// if the array is empty, useEffect will behave exactly like componentDidMount and execute only on the first rendering
-	// if you pass elements into this array, useEffect will execute every time those value changes
+	/**
+	 * ^^^if the array is empty, useEffect will behave exactly like 
+	 * componentDidMount and execute only on the first rendering
+	 * 
+	 * if you pass elements into this array, useEffect will execute 
+	 * every time those value changes
+	 */
 
-	
-	// this function will reference our dropDownOptions state and grab our optionsCompany array, iterate over it and create an option tag per element
+
+	/**
+	 * mapCompanies will reference our dropDownOptions state and 
+	 * grab our optionsCompany array, iterate over it and create an option 
+	 * tag per element
+	 */
 	const mapCompanies = () => {
 		return dropDownOptions.optionsCompany.map((company) => {
 			return (
@@ -126,9 +165,15 @@ const Search: React.FC = () => {
 		})
 	}
 
-	// Event Handler that will update our state depending on what the user selects on the dropdown menu selection for Company
-	// TS: event: React.ChangeEvent<HTMLSelectElement>
-		// TS Translation: what kind of event is it? <what kind of element type>
+	/**
+	 * Event Handler that will update our state depending on what the user
+	 * selects on the dropdown menu selection for Company
+	 * 
+	 * @param event: TS needs to specify what kind of event we are 
+	 * listening to and what kind of element is being targeted
+	 * Eg. event: React.ChangeEvent<HTMLSelectElement>
+	 * TS Translation: what kind of event is it? <element type>
+	 */
 	const companyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const { value } = event.target;
 		setSearchInfo((prevState) => ({
@@ -138,7 +183,14 @@ const Search: React.FC = () => {
 		console.log('Company Search Option Changed');
 	}
 
-	// Same Event Handler but targeting a different Select Tag and updating a different property in searchInfo state
+	/**
+	 * Same Event Handler but targeting a different Selet Tag and updating a different property in searchInfo state
+	 * 
+	 * @param event: TS needs to specify what kind of event we are 
+	 * listening to and what kind of element is being targeted
+	 * Eg. event: React.ChangeEvent<HTMLSelectElement>
+	 * TS Translation: what kind of event is it? <element type>
+	 */
 	const jobChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const { value } = event.target;
 		setSearchInfo((prevState) => ({
@@ -148,9 +200,18 @@ const Search: React.FC = () => {
 		console.log('Job Search Option Changed');
 	}
 
-
-	// Similar Event Handler that targets the Form tag and will make a axios post request passing in our searchInfo state in our req.body
-	// When we receive a settled (successful) promise, we want to update our resultInfo state, with all the data we retrieved from the SQL db
+	/**
+	 * Similar Event Handler that targets the Form tag and will make an
+	 * axios post request passing in our searchInfo state in our req.body
+	 * 
+	 * When we receive a settled (successful) promise, we want to update
+	 * our resultInfo state, with all the data we retrieved from the SQL db
+	 * 
+	 * @param event: TS needs to specify what kind of event we are 
+	 * listening to and what kind of element is being targeted
+	 * Eg. event: React.FormEvent<HTMLElement>
+	 * TS Translation: what kind of event is it? <element type>
+	 */
 	const searchStart = (event: React.FormEvent<HTMLElement>) => {
 		event.preventDefault();
 		console.log('Search Button Clicked')
@@ -175,6 +236,10 @@ const Search: React.FC = () => {
 			})
 	}
 
+	/**
+	 * Quick Table Header render function using the map method, so that 
+	 * our code remains DRY
+	 */
 	const renderTableHeader = () => {
 		const headerElement = ['Profile Pic', 'First Name', 'Last Name', 'City', 'State', 'Country', 'Current Company', 'Past Company', 'Job Position', 'Years of Experience', 'Tech Stack'];
 
@@ -185,7 +250,15 @@ const Search: React.FC = () => {
 		})
 	}
 
-	// this function targets our resultInfo state and returns customized table rows with the content from our state
+	/**
+	 * Table Body Row(s) render function using the map method, so
+	 * that our code remains DRY
+	 * 
+	 * This function targets our usersArray property (its value is 
+	 * an array of objects) from our resultArray state, map iterates 
+	 * over that targeted array and returns customized table rows with 
+	 * the content drawn from each element in the iterated array
+	 */
 	const renderTableBody = () => {
 		return resultArray.usersArray.map((userObj) => {
 			return (
@@ -209,11 +282,12 @@ const Search: React.FC = () => {
 	// Search FC will be rendering the following return statement
 	return (
 		<div>
-			<div id="searchContainer">
-				{/* Form Tag that has an onSubmit attribute that will take all our select tag values once the input select button has been clicked on */}
-				<form id="searchBar" onSubmit={searchStart}>
+			{/* Search Container */}
+			<div id="searchContainer" className="container mt-3 d-flex justify-content-center">
+				{/* Form Tag that has an onSubmit attribute that will take all our select tag values once the submit input tag has been clicked on */}
+				<form id="searchBar" onSubmit={searchStart} className="d-flex justify-content-center flex-column">
 					{/* Company Name from Database */}
-					<select name="Company Search" id="searchCompany" onChange={companyChange} defaultValue="Company">
+					<select name="Company Search" id="searchCompany" onChange={companyChange} defaultValue="Company" className="custom-select mb-3">
 						<option value="" hidden>Company</option>
 						<option value="Apple">Apple</option>
 						<option value="Google">Google</option>
@@ -222,7 +296,7 @@ const Search: React.FC = () => {
 						<option value="Other">Other</option>
 					</select>
 					{/* Job Position */}
-					<select name="Job Search" id="searchJob"onChange={jobChange} defaultValue="Job Position">
+					<select name="Job Search" id="searchJob" onChange={jobChange} defaultValue="Job Position" className="custom-select mb-3">
 						<option value="" hidden>Job Position</option>
 						<option value="Software Engineer">Software Engineer</option>
 						<option value="Product Engineer">Product Engineer</option>
@@ -231,17 +305,20 @@ const Search: React.FC = () => {
 						{mapJobs()}
 					</select>
 					{/* Submit Input tag that will initate the form's onSubmit attribute function: searchStart with the post request */}
-					<input type="submit" id="searchButton"/>
+					<input type="submit" id="searchButton" className="btn mb-3 btn-success" value="Search"/>
 					{/* Reset Input tag that will change all the select values back to default */}
-					<input type="reset" id="resetButton"/>
+					<input type="reset" id="resetButton" className="btn mb-3" />
 					{console.log(searchInfo)}
 				</form>
 				{/* NEED TO INSERT SOME CONDITIONAL LOGIC, ONCE WE GET A SUCCESSFUL RESPONSE FROM OUR AXIOS POST REQUEST FROM OUR SEARCHSTART FUNCTION AROUND LINE 90 */}
 			</div>
-			<div id="resultContainer">
-				<table id="resultTable">
+			{/* Results Container */}
+			<div id="resultsContainer">
+				<table id="resultTable" className="table table-hover m-5">
+					<thead>
+						{renderTableHeader()}
+					</thead>
 					<tbody>
-						<tr>{renderTableHeader()}</tr>
 						{renderTableBody()}
 					</tbody>
 				</table>

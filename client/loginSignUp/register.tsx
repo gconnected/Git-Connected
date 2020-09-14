@@ -12,10 +12,11 @@ interface signUpInfo {
  * This component uses signUp as our state through react hooks
  */
 const RegistrationForm: React.FC = (props) => {
-  // React Hooks assigning signUpInfo as type to state
+	// React Hooks assigning signUpInfo as type to state
+	// signUp -> state and setSignUp -> setState()
   const [signUp, setSignUp] = useState<signUpInfo>({
-    email: "",
-    password: "",
+    email: "", // value has to be string
+    password: "", // value has to be string
   });
 
   /**
@@ -23,6 +24,8 @@ const RegistrationForm: React.FC = (props) => {
    * @param e: needs to be declared with React.ChangeEvent type pointed at HTMLInputElement.
    */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		// const id = e.target.id --> input id
+		// const value - e.target.value --> input value
     const { id, value } = e.target;
     setSignUp((prevState) => ({
       ...prevState,
@@ -36,7 +39,8 @@ const RegistrationForm: React.FC = (props) => {
    * Specified with event and declared with React.MouseEvent type pointed at HTMLElement.
    */
   const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault();
+		event.preventDefault();
+		// INSERT AXIOS REQUEST
     console.log("success");
   };
 

@@ -26,11 +26,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const axios_1 = __importDefault(require("axios"));
-// declaring a functional component labeled Search (TS: React.FC)
+/**
+ * TS: React.FC => it is a label to confirm that our Search Function is a React Functional Component
+ */
 const Search = () => {
-    // React Hooks: searchInfo => state, setSearchInfo => setState
-    // useState initializes our starting values in our searchInfo state
-    // <searchInfo> is like a schema that the searchInfo values need to adhere to which was already declared back in line 6 in "interface searchInfo"
+    /**
+     * React Hooks: searchInfo => state, setSearchInfo => setState
+     * useState initializes our starting values in our searchInfo state
+     *
+     * <searchInfo> is like a schema that the searchInfo values
+     * need to adhere to which was already declared back in line 6
+     * in "interface searchInfo"
+     */
     const [searchInfo, setSearchInfo] = react_1.useState({
         searchCompany: "",
         searchJob: "",
@@ -83,9 +90,18 @@ const Search = () => {
             console.log('Error in App Axios Get Request for /jobs', err);
         });
     }, []);
-    // if the array is empty, useEffect will behave exactly like componentDidMount and execute only on the first rendering
-    // if you pass elements into this array, useEffect will execute every time those value changes
-    // this function will reference our dropDownOptions state and grab our optionsCompany array, iterate over it and create an option tag per element
+    /**
+     * ^^^if the array is empty, useEffect will behave exactly like
+     * componentDidMount and execute only on the first rendering
+     *
+     * if you pass elements into this array, useEffect will execute
+     * every time those value changes
+     */
+    /**
+     * mapCompanies will reference our dropDownOptions state and
+     * grab our optionsCompany array, iterate over it and create an option
+     * tag per element
+     */
     const mapCompanies = () => {
         return dropDownOptions.optionsCompany.map((company) => {
             return (react_1.default.createElement("option", { value: company }, company));
@@ -97,9 +113,15 @@ const Search = () => {
             return (react_1.default.createElement("option", { value: job }, job));
         });
     };
-    // Event Handler that will update our state depending on what the user selects on the dropdown menu selection for Company
-    // TS: event: React.ChangeEvent<HTMLSelectElement>
-    // TS Translation: what kind of event is it? <what kind of element type>
+    /**
+     * Event Handler that will update our state depending on what the user
+     * selects on the dropdown menu selection for Company
+     *
+     * @param event: TS needs to specify what kind of event we are
+     * listening to and what kind of element is being targeted
+     * Eg. event: React.ChangeEvent<HTMLSelectElement>
+     * TS Translation: what kind of event is it? <element type>
+     */
     const companyChange = (event) => {
         const { value } = event.target;
         setSearchInfo((prevState) => ({
@@ -108,7 +130,14 @@ const Search = () => {
         }));
         console.log('Company Search Option Changed');
     };
-    // Same Event Handler but targeting a different Select Tag and updating a different property in searchInfo state
+    /**
+     * Same Event Handler but targeting a different Selet Tag and updating a different property in searchInfo state
+     *
+     * @param event: TS needs to specify what kind of event we are
+     * listening to and what kind of element is being targeted
+     * Eg. event: React.ChangeEvent<HTMLSelectElement>
+     * TS Translation: what kind of event is it? <element type>
+     */
     const jobChange = (event) => {
         const { value } = event.target;
         setSearchInfo((prevState) => ({
@@ -117,8 +146,18 @@ const Search = () => {
         }));
         console.log('Job Search Option Changed');
     };
-    // Similar Event Handler that targets the Form tag and will make a axios post request passing in our searchInfo state in our req.body
-    // When we receive a settled (successful) promise, we want to update our resultInfo state, with all the data we retrieved from the SQL db
+    /**
+     * Similar Event Handler that targets the Form tag and will make an
+     * axios post request passing in our searchInfo state in our req.body
+     *
+     * When we receive a settled (successful) promise, we want to update
+     * our resultInfo state, with all the data we retrieved from the SQL db
+     *
+     * @param event: TS needs to specify what kind of event we are
+     * listening to and what kind of element is being targeted
+     * Eg. event: React.FormEvent<HTMLElement>
+     * TS Translation: what kind of event is it? <element type>
+     */
     const searchStart = (event) => {
         event.preventDefault();
         console.log('Search Button Clicked');
@@ -142,13 +181,25 @@ const Search = () => {
             }));
         });
     };
+    /**
+     * Quick Table Header render function using the map method, so that
+     * our code remains DRY
+     */
     const renderTableHeader = () => {
         const headerElement = ['Profile Pic', 'First Name', 'Last Name', 'City', 'State', 'Country', 'Current Company', 'Past Company', 'Job Position', 'Years of Experience', 'Tech Stack'];
         return headerElement.map((element, index) => {
             return (react_1.default.createElement("th", { key: index }, element.toUpperCase()));
         });
     };
-    // this function targets our resultInfo state and returns customized table rows with the content from our state
+    /**
+     * Table Body Row(s) render function using the map method, so
+     * that our code remains DRY
+     *
+     * This function targets our usersArray property (its value is
+     * an array of objects) from our resultArray state, map iterates
+     * over that targeted array and returns customized table rows with
+     * the content drawn from each element in the iterated array
+     */
     const renderTableBody = () => {
         return resultArray.usersArray.map((userObj) => {
             return (react_1.default.createElement("tr", null,
@@ -167,29 +218,28 @@ const Search = () => {
     };
     // Search FC will be rendering the following return statement
     return (react_1.default.createElement("div", null,
-        react_1.default.createElement("div", { id: "searchContainer" },
-            react_1.default.createElement("form", { id: "searchBar", onSubmit: searchStart },
-                react_1.default.createElement("select", { name: "Company Search", id: "searchCompany", onChange: companyChange, defaultValue: "Company" },
+        react_1.default.createElement("div", { id: "searchContainer", className: "container mt-3 d-flex justify-content-center" },
+            react_1.default.createElement("form", { id: "searchBar", onSubmit: searchStart, className: "d-flex justify-content-center flex-column" },
+                react_1.default.createElement("select", { name: "Company Search", id: "searchCompany", onChange: companyChange, defaultValue: "Company", className: "custom-select mb-3" },
                     react_1.default.createElement("option", { value: "", hidden: true }, "Company"),
                     react_1.default.createElement("option", { value: "Apple" }, "Apple"),
                     react_1.default.createElement("option", { value: "Google" }, "Google"),
                     react_1.default.createElement("option", { value: "Instagram" }, "Instagram"),
                     mapCompanies(),
                     react_1.default.createElement("option", { value: "Other" }, "Other")),
-                react_1.default.createElement("select", { name: "Job Search", id: "searchJob", onChange: jobChange, defaultValue: "Job Position" },
+                react_1.default.createElement("select", { name: "Job Search", id: "searchJob", onChange: jobChange, defaultValue: "Job Position", className: "custom-select mb-3" },
                     react_1.default.createElement("option", { value: "", hidden: true }, "Job Position"),
                     react_1.default.createElement("option", { value: "Software Engineer" }, "Software Engineer"),
                     react_1.default.createElement("option", { value: "Product Engineer" }, "Product Engineer"),
                     react_1.default.createElement("option", { value: "Product Designer" }, "Product Designer"),
                     react_1.default.createElement("option", { value: "CTO" }, "CTO"),
                     mapJobs()),
-                react_1.default.createElement("input", { type: "submit", id: "searchButton" }),
-                react_1.default.createElement("input", { type: "reset", id: "resetButton" }),
+                react_1.default.createElement("input", { type: "submit", id: "searchButton", className: "btn mb-3 btn-success", value: "Search" }),
+                react_1.default.createElement("input", { type: "reset", id: "resetButton", className: "btn mb-3" }),
                 console.log(searchInfo))),
-        react_1.default.createElement("div", { id: "resultContainer" },
-            react_1.default.createElement("table", { id: "resultTable" },
-                react_1.default.createElement("tbody", null,
-                    react_1.default.createElement("tr", null, renderTableHeader()),
-                    renderTableBody())))));
+        react_1.default.createElement("div", { id: "resultsContainer" },
+            react_1.default.createElement("table", { id: "resultTable", className: "table table-hover m-5" },
+                react_1.default.createElement("thead", null, renderTableHeader()),
+                react_1.default.createElement("tbody", null, renderTableBody())))));
 };
 exports.default = Search;

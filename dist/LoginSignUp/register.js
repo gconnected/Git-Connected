@@ -25,6 +25,7 @@ const react_1 = __importStar(require("react"));
  */
 const RegistrationForm = (props) => {
     // React Hooks assigning signUpInfo as type to state
+    // signUp -> state and setSignUp -> setState()
     const [signUp, setSignUp] = react_1.useState({
         email: "",
         password: "",
@@ -34,6 +35,8 @@ const RegistrationForm = (props) => {
      * @param e: needs to be declared with React.ChangeEvent type pointed at HTMLInputElement.
      */
     const handleChange = (e) => {
+        // const id = e.target.id --> input id
+        // const value - e.target.value --> input value
         const { id, value } = e.target;
         setSignUp((prevState) => ({
             ...prevState,
@@ -47,6 +50,7 @@ const RegistrationForm = (props) => {
      */
     const handleSubmit = (event) => {
         event.preventDefault();
+        // INSERT AXIOS REQUEST
         console.log("success");
     };
     return (react_1.default.createElement("div", { className: "container card col-12 col-lg-4 justify-content-center t-2 hv-center" },
