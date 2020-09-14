@@ -4,6 +4,7 @@ import Header from "./loginSignUp/header";
 import RegistrationForm from "./loginSignUp/register";
 import UserProfile from "./userProfile/userProfile";
 import Search from "./searchResult/search";
+import Login from "./loginSignUp/login";
 // import { whatever you want } from 'react-bootstrap';
 
 // Setting app as functional component
@@ -11,6 +12,7 @@ const App: React.FC = () => {
   return (
     <div>
       <Header />
+      <Login />
       {true ? (
         <div className="signUp">
           <RegistrationForm />
