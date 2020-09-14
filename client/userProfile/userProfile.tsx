@@ -10,12 +10,14 @@ interface profileInfo {
   city: string;
   state: string;
   country: string;
-  company_name: string;
+	company_name: string;
+	// past_companies: array
   past_companies: string;
   job: string;
-  years_exp: number;
+	years_exp: number;
+	// techstack: array
   techstack: string;
-  profile_pic: any;
+	profile_pic: any;
 }
 
 /**Creating functional component in react.
@@ -35,7 +37,7 @@ const UserProfile: React.FC = () => {
     job: "",
     years_exp: 0,
     techstack: "",
-    profile_pic: "",
+		profile_pic: "",
   });
 
   /**
@@ -56,7 +58,8 @@ const UserProfile: React.FC = () => {
    * Specified with event and declared with React.MouseEvent type pointed at HTMLElement.
    */
   const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault();
+		event.preventDefault();
+		// INSERT AXIOS REQUEST
     console.log("Profile successfully created");
   };
 

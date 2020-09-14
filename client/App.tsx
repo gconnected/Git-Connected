@@ -6,19 +6,8 @@ import UserProfile from "./userProfile/userProfile";
 import Search from "./searchResult/search";
 // import { whatever you want } from 'react-bootstrap';
 
-
-interface loginInfo {
-  email: string;
-  password: string;
-}
-
 // Setting app as functional component
 const App: React.FC = () => {
-  // using count as state hooks
-  const [login, setLogin] = useState<loginInfo>({
-    email: "",
-    password: "",
-  });
   return (
     <div>
       <Header />
@@ -27,7 +16,7 @@ const App: React.FC = () => {
           <RegistrationForm />
         </div>
       ) : null}
-      
+
 			<Search />
 
       {false ? (
