@@ -45,13 +45,13 @@ const RegistrationForm: React.FC = (props) => {
   };
 
   return (
-    <div className="container card col-12 col-lg-4 justify-content-center t-2 hv-center">
-      <div className="row col-12 mt-3 d-flex text-grey">
-        <span className="h3">Register</span>
+    <div className="forms">
+      <div>
+        <span>Register</span>
       </div>
       <form>
         {/* Email */}
-        <div className="form-group text-left ">
+        <div>
           <input
             type="email"
             className="form-control"

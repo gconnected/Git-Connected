@@ -18,8 +18,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
+const axios_1 = __importDefault(require("axios"));
 /**Creating functional component in react.
  * This component uses profile as our state through react hooks
  */
@@ -58,7 +62,26 @@ const UserProfile = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // INSERT AXIOS REQUEST
-        console.log("Profile successfully created");
+        axios_1.default
+            .post("/createUser", profile)
+            .then(() => alert("You are now connected!! \r\n You can now search for connections!!"))
+            .then(() => console.log("success!"))
+            .catch((err) => console.error(err));
+        // Setting form back to empty values
+        setProfile({
+            firstName: "",
+            lastName: "",
+            birthDate: "",
+            city: "",
+            state: "",
+            country: "",
+            company_name: "",
+            past_companies: "",
+            job: "",
+            years_exp: 0,
+            techstack: "",
+            profile_pic: "",
+        });
     };
     return (react_1.default.createElement("div", { className: "container col-20 justify-item-center mt-5" },
         react_1.default.createElement("div", { className: "row col-12 d-flex justify-content-center text-grey" },

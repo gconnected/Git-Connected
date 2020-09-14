@@ -32,8 +32,8 @@ const Login: React.FC = () => {
     console.log("success");
   };
   return (
-    <div id="login" className="container card mt-5 col-12 col-lg-4 ">
-    <div className="row col-12 mt-3 d-flex text-grey">
+    <div className="forms">
+    <div>
       <span className="h3">login</span>
     </div>
     <form>

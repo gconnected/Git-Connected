@@ -5,7 +5,7 @@ import RegistrationForm from "./loginSignUp/register";
 import UserProfile from "./userProfile/userProfile";
 import Search from "./searchResult/search";
 import Login from "./loginSignUp/login";
-// import { whatever you want } from 'react-bootstrap';
+
 
 // Setting app as functional component
 const App: React.FC = () => {
@@ -19,14 +19,14 @@ const App: React.FC = () => {
         </div>
       ) : null}
 
-			<Search />
 
-      {false ? (
+      {true ? (
         <div className="profile">
           <UserProfile />
         </div>
       ) : null}
-
+      
+      <Search />
     </div>
   );
 };

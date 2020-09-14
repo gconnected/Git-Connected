@@ -53,11 +53,11 @@ const RegistrationForm = (props) => {
         // INSERT AXIOS REQUEST
         console.log("success");
     };
-    return (react_1.default.createElement("div", { className: "container card col-12 col-lg-4 justify-content-center t-2 hv-center" },
-        react_1.default.createElement("div", { className: "row col-12 mt-3 d-flex text-grey" },
-            react_1.default.createElement("span", { className: "h3" }, "Register")),
+    return (react_1.default.createElement("div", { className: "forms" },
+        react_1.default.createElement("div", null,
+            react_1.default.createElement("span", null, "Register")),
         react_1.default.createElement("form", null,
-            react_1.default.createElement("div", { className: "form-group text-left " },
+            react_1.default.createElement("div", null,
                 react_1.default.createElement("input", { type: "email", className: "form-control", id: "email", placeholder: "Enter email", value: signUp.email, onChange: handleChange })),
             react_1.default.createElement("div", { className: "form-group text-left" },
                 react_1.default.createElement("input", { type: "password", className: "form-control", id: "password", placeholder: "Enter Password", value: signUp.password, onChange: handleChange })),

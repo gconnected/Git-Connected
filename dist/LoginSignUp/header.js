@@ -11,8 +11,8 @@ const react_1 = __importDefault(require("react"));
 const Header = () => {
     return (
     // Bootstrap Navbar
-    react_1.default.createElement("nav", { className: "navbar navbar-dark bg-dark fixed-top d-flex justify-content-center" },
-        react_1.default.createElement("div", { className: "row col-12 text-white d-flex justify-content-center" },
-            react_1.default.createElement("span", { id: "gitConnected", className: "h3" }, "gitConnected."))));
+    react_1.default.createElement("nav", null,
+        react_1.default.createElement("div", { className: "nav-bar-div" },
+            react_1.default.createElement("span", { id: "gitConnected" }, "gitConnected."))));
 };
 exports.default = Header;

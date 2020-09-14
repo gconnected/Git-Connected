@@ -37,8 +37,8 @@ const Login = () => {
         // INSERT AXIOS REQUEST
         console.log("success");
     };
-    return (react_1.default.createElement("div", { id: "login", className: "container card mt-5 col-12 col-lg-4 " },
-        react_1.default.createElement("div", { className: "row col-12 mt-3 d-flex text-grey" },
+    return (react_1.default.createElement("div", { className: "forms" },
+        react_1.default.createElement("div", null,
             react_1.default.createElement("span", { className: "h3" }, "login")),
         react_1.default.createElement("form", null,
             react_1.default.createElement("div", { className: "form-group text-left" },
