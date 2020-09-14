@@ -23,7 +23,7 @@ const react_1 = __importStar(require("react"));
 const Login = () => {
     const [loginInfo, setLogin] = react_1.useState({
         email: "",
-        password: ""
+        password: "",
     });
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -39,7 +39,7 @@ const Login = () => {
     };
     return (react_1.default.createElement("div", { className: "forms" },
         react_1.default.createElement("div", null,
-            react_1.default.createElement("span", { className: "h3" }, "login")),
+            react_1.default.createElement("span", { className: "h3" }, "Login")),
         react_1.default.createElement("form", null,
             react_1.default.createElement("div", { className: "form-group text-left" },
                 react_1.default.createElement("input", { type: "email", className: "form-control", id: "email", placeholder: "Enter email", value: loginInfo.email, onChange: handleChange })),

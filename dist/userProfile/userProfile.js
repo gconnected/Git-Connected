@@ -30,17 +30,15 @@ const axios_1 = __importDefault(require("axios"));
 const UserProfile = () => {
     // React Hooks assigning signUpInfo as type to state
     const [profile, setProfile] = react_1.useState({
-        firstName: "",
-        lastName: "",
-        birthDate: "",
+        firstname: "",
+        lastname: "",
+        birthdate: "",
         city: "",
         state: "",
         country: "",
         company_name: "",
-        past_companies: "",
         job: "",
         years_exp: 0,
-        techstack: "",
         profile_pic: "",
     });
     /**
@@ -63,23 +61,20 @@ const UserProfile = () => {
         event.preventDefault();
         // INSERT AXIOS REQUEST
         axios_1.default
-            .post("/createUser", profile)
-            .then(() => alert("You are now connected!! \r\n You can now search for connections!!"))
+            .post("/api/createUser", profile)
             .then(() => console.log("success!"))
             .catch((err) => console.error(err));
         // Setting form back to empty values
         setProfile({
-            firstName: "",
-            lastName: "",
-            birthDate: "",
+            firstname: "",
+            lastname: "",
+            birthdate: "",
             city: "",
             state: "",
             country: "",
             company_name: "",
-            past_companies: "",
             job: "",
             years_exp: 0,
-            techstack: "",
             profile_pic: "",
         });
     };
@@ -88,11 +83,11 @@ const UserProfile = () => {
             react_1.default.createElement("span", { className: "h3" }, "Create Profile")),
         react_1.default.createElement("form", null,
             react_1.default.createElement("div", { className: "form-group text-left" },
-                react_1.default.createElement("input", { type: "firstName", className: "form-control", id: "firstName", placeholder: "First Name", value: profile.firstName, onChange: handleChange })),
+                react_1.default.createElement("input", { type: "firstname", className: "form-control", id: "firstname", placeholder: "First Name", value: profile.firstname, onChange: handleChange })),
             react_1.default.createElement("div", { className: "form-group text-left" },
-                react_1.default.createElement("input", { type: "lastName", className: "form-control", id: "lastName", placeholder: "Last Name", value: profile.lastName, onChange: handleChange })),
+                react_1.default.createElement("input", { type: "lastname", className: "form-control", id: "lastname", placeholder: "Last Name", value: profile.lastname, onChange: handleChange })),
             react_1.default.createElement("div", { className: "form-group text-left" },
-                react_1.default.createElement("input", { type: "birthDate", className: "form-control", id: "birthDate", placeholder: "Birth Date", value: profile.birthDate, onChange: handleChange })),
+                react_1.default.createElement("input", { type: "birthdate", className: "form-control", id: "birthdate", placeholder: "Month Day, Year", value: profile.birthdate, onChange: handleChange })),
             react_1.default.createElement("div", { className: "form-group text-left" },
                 react_1.default.createElement("input", { type: "city", className: "form-control", id: "city", placeholder: "City", value: profile.city, onChange: handleChange })),
             react_1.default.createElement("div", { className: "form-group text-left" },
@@ -102,13 +97,9 @@ const UserProfile = () => {
             react_1.default.createElement("div", { className: "form-group text-left" },
                 react_1.default.createElement("input", { type: "company_name", className: "form-control", id: "company_name", placeholder: "Company", value: profile.company_name, onChange: handleChange })),
             react_1.default.createElement("div", { className: "form-group text-left" },
-                react_1.default.createElement("input", { type: "past_companies", className: "form-control", id: "past_companies", placeholder: "Past Company", value: profile.past_companies, onChange: handleChange })),
-            react_1.default.createElement("div", { className: "form-group text-left" },
                 react_1.default.createElement("input", { type: "job", className: "form-control", id: "job", placeholder: "Job", value: profile.job, onChange: handleChange })),
             react_1.default.createElement("div", { className: "form-group text-left" },
                 react_1.default.createElement("input", { type: "years_exp", className: "form-control", id: "years_exp", placeholder: "Years Experience", value: profile.years_exp, onChange: handleChange })),
-            react_1.default.createElement("div", { className: "form-group text-left" },
-                react_1.default.createElement("input", { type: "techstack", className: "form-control", id: "techstack", placeholder: "Stack", value: profile.techstack, onChange: handleChange })),
             react_1.default.createElement("div", { className: "form-group text-left" },
                 react_1.default.createElement("input", { type: "profile_pic", className: "form-control", id: "profile_pic", placeholder: "Profile Picture", value: profile.profile_pic, onChange: handleChange })),
             react_1.default.createElement("button", { type: "submit", className: "btn mb-5 btn-success", onClick: handleSubmit }, "Git Connected!")),
