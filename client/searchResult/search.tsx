@@ -3,7 +3,6 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { stat } from 'fs';
 
 /**
  * TS: interface searchInfo: lets us initialize the data type for our searchInfo state
@@ -241,7 +240,7 @@ const Search: React.FC = () => {
 	 * our code remains DRY
 	 */
 	const renderTableHeader = () => {
-		const headerElement = ['Profile Pic', 'First Name', 'Last Name', 'City', 'State', 'Country', 'Current Company', 'Past Company', 'Job Position', 'Years of Experience', 'Tech Stack'];
+		const headerElement = ['', 'First Name', 'Last Name', 'City', 'State', 'Country', 'Current Company', 'Past Company', 'Job Position', 'Years of Experience', 'Tech Stack'];
 
 		return headerElement.map((element, index) => {
 			return (
@@ -281,9 +280,9 @@ const Search: React.FC = () => {
 
 	// Search FC will be rendering the following return statement
 	return (
-		<div>
+		<div id="outerSearchContainer" className="container mt-3 d-flex justify-content-center flex-column">
 			{/* Search Container */}
-			<div id="searchContainer" className="container mt-3 d-flex justify-content-center">
+			<div id="innerSearchContainer" className="container mt-3 d-flex justify-content-center">
 				{/* Form Tag that has an onSubmit attribute that will take all our select tag values once the submit input tag has been clicked on */}
 				<form id="searchBar" onSubmit={searchStart} className="d-flex justify-content-center flex-column">
 					{/* Company Name from Database */}
@@ -307,18 +306,18 @@ const Search: React.FC = () => {
 					{/* Submit Input tag that will initate the form's onSubmit attribute function: searchStart with the post request */}
 					<input type="submit" id="searchButton" className="btn mb-3 btn-success" value="Search"/>
 					{/* Reset Input tag that will change all the select values back to default */}
-					<input type="reset" id="resetButton" className="btn mb-3" />
+					<input type="reset" id="resetButton" className="btn mb-5" />
 					{console.log(searchInfo)}
 				</form>
 				{/* NEED TO INSERT SOME CONDITIONAL LOGIC, ONCE WE GET A SUCCESSFUL RESPONSE FROM OUR AXIOS POST REQUEST FROM OUR SEARCHSTART FUNCTION AROUND LINE 90 */}
 			</div>
 			{/* Results Container */}
-			<div id="resultsContainer">
-				<table id="resultTable" className="table table-hover m-5">
-					<thead>
+			<div id="resultsContainer" className="d-flex justify-content-center">
+				<table id="resultTable" className="table table-hover">
+					<thead className="thead-dark text-center">
 						{renderTableHeader()}
 					</thead>
-					<tbody>
+					<tbody className="text-center">
 						{renderTableBody()}
 					</tbody>
 				</table>
