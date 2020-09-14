@@ -14,11 +14,11 @@ const login_1 = __importDefault(require("./loginSignUp/login"));
 const App = () => {
     return (react_1.default.createElement("div", null,
         react_1.default.createElement(header_1.default, null),
-        react_1.default.createElement(login_1.default, null),
-        true ? (react_1.default.createElement("div", { className: "signUp" },
-            react_1.default.createElement(register_1.default, null))) : null,
-        true ? (react_1.default.createElement("div", { className: "profile" },
-            react_1.default.createElement(userProfile_1.default, null))) : null,
+        react_1.default.createElement("div", { id: "loginSignUpContainer" },
+            react_1.default.createElement(login_1.default, null),
+            true ? (react_1.default.createElement("div", { className: "signUp" },
+                react_1.default.createElement(register_1.default, null))) : null),
+        true ? (react_1.default.createElement(userProfile_1.default, null)) : null,
         react_1.default.createElement(search_1.default, null)));
 };
 exports.default = App;

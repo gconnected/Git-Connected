@@ -3,29 +3,130 @@
 	padding: 0;
 }
 
-#gitConnected  {
-	font-family: 'Press Start 2P', cursive !important;
-	margin-top: 15px;
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #6513b2;
+}
 
+img {
+	margin: 100px auto 0 auto;
+	display: flex;
+}
+
+#gitConnected  {
+	font-family: 'Rubik Mono One', sans-serif;
+	margin-top: 15px;
+	font-size: 17pt;
+	color: #1eefd7;
 }
 
 nav {
-	background-image: linear-gradient(to right, grey, rgb(58, 57, 57));
-	height: 50px;
+	background-image: rgba(0, 0, 0, 0);
+	height: 100px;
 }
 
 .nav-bar-div {
 	display: flex;
-	flex-direction: row;
 	justify-content: center;
-
-
+	height: 100px;
 }
 
-.forms {
+#loginSignUpContainer {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	margin-top: 20px;
-	
+}
+
+.login {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	margin: 0 25px 0 0;
+}
+
+.signUp {
+	margin: 0 0 0 25px;
+}
+
+input {
+	padding: 7px 10px;
+	margin: 5px;
+	text-align: center;
+	border: none;
+}
+
+.loginSignUpFields {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+select {
+	text-align-last: center;
+	text-indent: 12px;
+	color: #6e6e6e;
+	padding: 25px -5px;
+	margin: 5px auto 5px auto;
+	width: 240px;
+	font-size: 10pt;
+	border: none;
+	height: 27px;
+}
+
+button {
+	padding: 5px 10px;
+	background-color: #1eefd7;
+	font-family: 'Rubik Mono One', sans-serif;
+	color: #6513b2;
+	font-size: 12pt;
+	border: none;
+	border-radius: 2px;
+	margin: 5px;
+}
+
+.loginSignUpButtons {
+	height: 35px;
+}
+
+#createProfileContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+#createProfileHeader {
+	margin: 50px auto 25px auto;
+}
+
+#createProfileIntro {
+	font-family: 'Rubik Mono One', sans-serif;
+	color: #1eefd7;
+	font-size: 14pt;
+}
+
+#createProfileForm {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 auto;
+	width: 50%;
+}
+
+#createButtonContainer {
+	margin: 0 auto;
+}
+
+#createButton {
+	width: 300px;
+	height: 50px;
+	font-size: 16pt;
+	margin: 25px 0 0 0;
+}
+
+input:focus {
+	background-color: #c0fff8;
 }

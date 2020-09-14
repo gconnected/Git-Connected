@@ -45,27 +45,20 @@ const RegistrationForm: React.FC = (props) => {
   };
 
   return (
-    <div className="forms">
-      <div>
-        <span>Register</span>
-      </div>
-      <form>
+    <div className="signup">
+      <form className="loginSignUpFields">
         {/* Email */}
-        <div>
           <input
             type="email"
-            className="form-control"
             id="email"
             placeholder="Enter email"
             value={signUp.email}
             onChange={handleChange}
           />
-        </div>
         {/* Password */}
-        <div className="form-group text-left">
+        <div>
           <input
             type="password"
-            className="form-control"
             id="password"
             placeholder="Enter Password"
             value={signUp.password}
@@ -75,8 +68,8 @@ const RegistrationForm: React.FC = (props) => {
         {/* Need to add an click function that takes the values of the form and submits it to the server */}
         <button
           type="submit"
-          className="mb-3 btn btn-success"
-          onClick={handleSubmit}
+					onClick={handleSubmit}
+					className="loginSignUpButtons"
         >
           Register
         </button>

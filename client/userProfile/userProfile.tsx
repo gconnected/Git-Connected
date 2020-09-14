@@ -88,153 +88,123 @@ const UserProfile: React.FC = () => {
   };
 
   return (
-    <div className="container col-20 justify-item-center mt-5">
-      <div className="row col-12 d-flex justify-content-center text-grey">
-        <span className="h3">Create Profile</span>
-      </div>
-      <form>
-        {/* First Name */}
-        <div className="form-group text-left">
-          <input
-            type="firstName"
-            className="form-control"
-            id="firstName"
-            placeholder="First Name"
-            value={profile.firstName}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Last Name */}
-        <div className="form-group text-left">
-          <input
-            type="lastName"
-            className="form-control"
-            id="lastName"
-            placeholder="Last Name"
-            value={profile.lastName}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Birth Date */}
-        <div className="form-group text-left">
-          <input
-            type="birthDate"
-            className="form-control"
-            id="birthDate"
-            placeholder="Birth Date"
-            value={profile.birthDate}
-            onChange={handleChange}
-          />
-        </div>
-        {/* City */}
-        <div className="form-group text-left">
-          <input
-            type="city"
-            className="form-control"
-            id="city"
-            placeholder="City"
-            value={profile.city}
-            onChange={handleChange}
-          />
-        </div>
-        {/* State */}
-        <div className="form-group text-left">
-          <input
-            type="state"
-            className="form-control"
-            id="state"
-            placeholder="State"
-            value={profile.state}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Country */}
-        <div className="form-group text-left">
-          <input
-            type="country"
-            className="form-control"
-            id="country"
-            placeholder="Country"
-            value={profile.country}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Company */}
-        <div className="form-group text-left">
-          <input
-            type="company_name"
-            className="form-control"
-            id="company_name"
-            placeholder="Company"
-            value={profile.company_name}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Past Company */}
-        <div className="form-group text-left">
-          <input
-            type="past_companies"
-            className="form-control"
-            id="past_companies"
-            placeholder="Past Company"
-            value={profile.past_companies}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Job */}
-        <div className="form-group text-left">
-          <input
-            type="job"
-            className="form-control"
-            id="job"
-            placeholder="Job"
-            value={profile.job}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Years Experience */}
-        <div className="form-group text-left">
-          <input
-            type="years_exp"
-            className="form-control"
-            id="years_exp"
-            placeholder="Years Experience"
-            value={profile.years_exp}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Stack */}
-        <div className="form-group text-left">
-          <input
-            type="techstack"
-            className="form-control"
-            id="techstack"
-            placeholder="Stack"
-            value={profile.techstack}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Profile Picture */}
-        <div className="form-group text-left">
-          <input
-            type="profile_pic"
-            className="form-control"
-            id="profile_pic"
-            placeholder="Profile Picture"
-            value={profile.profile_pic}
-            onChange={handleChange}
-          />
-        </div>
-        <button
-          type="submit"
-          className="btn mb-5 btn-success"
-          onClick={handleSubmit}
-        >
-          Git Connected!
-        </button>
-      </form>
-      {console.log(profile)}
-    </div>
+    <div id="createProfileContainer">
+			<div id="createProfileHeader">
+			<span id="createProfileIntro">Tell us a little more about yourself...</span>
+			</div>
+      <div>
+			<form id="createProfileForm">
+						{/* First Name */}
+							<input
+								type="firstName"
+								id="firstName"
+								placeholder="First Name"
+								value={profile.firstName}
+								onChange={handleChange}
+							/>
+						{/* Last Name */}
+							<input
+								type="lastName"
+								id="lastName"
+								placeholder="Last Name"
+								value={profile.lastName}
+								onChange={handleChange}
+							/>
+						{/* Birth Date */}
+							<input
+								type="birthDate"
+								id="birthDate"
+								placeholder="Birth Date"
+								value={profile.birthDate}
+								onChange={handleChange}
+							/>
+						{/* City */}
+							<input
+								type="city"
+								id="city"
+								placeholder="City"
+								value={profile.city}
+								onChange={handleChange}
+							/>
+						{/* State */}
+							<input
+								type="state"
+								className="form-control"
+								id="state"
+								placeholder="State"
+								value={profile.state}
+								onChange={handleChange}
+							/>
+						{/* Country */}
+							<input
+								type="country"
+								id="country"
+								placeholder="Country"
+								value={profile.country}
+								onChange={handleChange}
+							/>
+						{/* Company */}
+							<input
+								type="company_name"
+								id="company_name"
+								placeholder="Company"
+								value={profile.company_name}
+								onChange={handleChange}
+							/>
+						{/* Past Company */}
+							<input
+								type="past_companies"
+								id="past_companies"
+								placeholder="Past Company"
+								value={profile.past_companies}
+								onChange={handleChange}
+							/>
+						{/* Job */}
+							<input
+								type="job"
+								id="job"
+								placeholder="Job"
+								value={profile.job}
+								onChange={handleChange}
+							/>
+						{/* Years Experience */}
+							<input
+								type="years_exp"
+								id="years_exp"
+								placeholder="Years Experience"
+								value={profile.years_exp}
+								onChange={handleChange}
+							/>
+						{/* Stack */}
+							<input
+								type="techstack"
+								id="techstack"
+								placeholder="Stack"
+								value={profile.techstack}
+								onChange={handleChange}
+							/>
+						{/* Profile Picture */}
+							<input
+								type="profile_pic"
+								id="profile_pic"
+								placeholder="Profile Picture"
+								value={profile.profile_pic}
+								onChange={handleChange}
+							/>
+				</form>
+			</div>
+			<div id="createButtonContainer">
+				<button
+					type="submit"
+					onClick={handleSubmit}
+					id="createButton"
+					form="createProfileForm"
+				>
+					Git Connected!
+				</button>
+			</div>
+				{console.log(profile)}
+			</div>
   );
 };
 
