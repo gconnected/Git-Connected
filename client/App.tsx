@@ -6,24 +6,23 @@ import UserProfile from "./userProfile/userProfile";
 import Search from "./searchResult/search";
 import Login from "./loginSignUp/login";
 
-
 // Setting app as functional component
 const App: React.FC = () => {
   return (
     <div>
       <Header />
-      <Login />
-      {true ? (
-        <div className="signUp">
-          <RegistrationForm />
-        </div>
-      ) : null}
 
-
+			<div id="loginSignUpContainer">
+				<Login />
+				{true ? (
+					<div className="signUp">
+						<RegistrationForm />
+					</div>
+				) : null}
+			</div>
+      
       {true ? (
-        <div className="profile">
-          <UserProfile />
-        </div>
+        <UserProfile />
       ) : null}
       
       <Search />

@@ -37,15 +37,13 @@ const Login = () => {
         // INSERT AXIOS REQUEST
         console.log("success");
     };
-    return (react_1.default.createElement("div", { className: "forms" },
-        react_1.default.createElement("div", null,
-            react_1.default.createElement("span", { className: "h3" }, "Login")),
-        react_1.default.createElement("form", null,
-            react_1.default.createElement("div", { className: "form-group text-left" },
-                react_1.default.createElement("input", { type: "email", className: "form-control", id: "email", placeholder: "Enter email", value: loginInfo.email, onChange: handleChange })),
-            react_1.default.createElement("div", { className: "form-group text-left" },
-                react_1.default.createElement("input", { type: "password", className: "form-control", id: "password", placeholder: "Enter password", value: loginInfo.password, onChange: handleChange })),
-            react_1.default.createElement("button", { type: "submit", className: "mb-3 btn btn-success", onClick: handleSubmit }, "Register"),
+    return (react_1.default.createElement("div", { className: "login" },
+        react_1.default.createElement("form", { className: "loginSignUpFields" },
+            react_1.default.createElement("div", null,
+                react_1.default.createElement("input", { type: "email", id: "email", placeholder: "Enter email", value: loginInfo.email, onChange: handleChange })),
+            react_1.default.createElement("div", null,
+                react_1.default.createElement("input", { type: "password", id: "password", placeholder: "Enter password", value: loginInfo.password, onChange: handleChange })),
+            react_1.default.createElement("button", { type: "submit", onClick: handleSubmit, className: "loginSignUpButtons" }, "Login"),
             console.log(loginInfo))));
 };
 exports.default = Login;
