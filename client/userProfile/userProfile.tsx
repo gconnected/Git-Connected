@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 /**Setting type of state and its components.
  * Set to the same shape as the state.
@@ -10,14 +11,14 @@ interface profileInfo {
   city: string;
   state: string;
   country: string;
-	company_name: string;
-	// past_companies: array
+  company_name: string;
+  // past_companies: array
   past_companies: string;
   job: string;
-	years_exp: number;
-	// techstack: array
+  years_exp: number;
+  // techstack: array
   techstack: string;
-	profile_pic: any;
+  profile_pic: any;
 }
 
 /**Creating functional component in react.
@@ -37,7 +38,7 @@ const UserProfile: React.FC = () => {
     job: "",
     years_exp: 0,
     techstack: "",
-		profile_pic: "",
+    profile_pic: "",
   });
 
   /**
@@ -58,9 +59,31 @@ const UserProfile: React.FC = () => {
    * Specified with event and declared with React.MouseEvent type pointed at HTMLElement.
    */
   const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
-		event.preventDefault();
-		// INSERT AXIOS REQUEST
-    console.log("Profile successfully created");
+    event.preventDefault();
+    // INSERT AXIOS REQUEST
+    axios
+      .post("/createUser", profile)
+      .then(() =>
+        alert(
+          "You are now connected!! \r\n You can now search for connections!!"
+        )
+      )
+      .then(() => console.log("success!"))
+      .catch((err) => console.error(err));
+    setProfile({
+      firstName: "",
+      lastName: "",
+      birthDate: "",
+      city: "",
+      state: "",
+      country: "",
+      company_name: "",
+      past_companies: "",
+      job: "",
+      years_exp: 0,
+      techstack: "",
+      profile_pic: "",
+    });
   };
 
   return (
