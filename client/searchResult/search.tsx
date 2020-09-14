@@ -99,6 +99,8 @@ const Search: React.FC = () => {
     resultYearsExp: 0,
   });
 
+  const [results, setResults] = useState<Array<any>>([]);
+
   const [dropDownOptions, setDropDownOptions] = useState<dropDownOptions>({
     optionsCompany: [],
     optionsJob: [],
@@ -212,26 +214,16 @@ const Search: React.FC = () => {
    * Eg. event: React.FormEvent<HTMLElement>
    * TS Translation: what kind of event is it? <element type>
    */
+
   const searchStart = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
     console.log("Search Button Clicked");
     // NEED TO EDIT THE result.data.(propertynames) => PLACEHOLDERS
     // BASED PLACEHOLDERS OFF OF SQL COLUMN NAMES
-    axios.post("/search", searchInfo).then((result) => {
-      setResultInfo((prevState) => ({
-        ...prevState,
-        resultProfilePic: result.data["profile_pic"],
-        resultFirstName: result.data.firstname,
-        resultLastName: result.data.lastname,
-        resultCity: result.data.city,
-        resultState: result.data.state,
-        resultCountry: result.data.country,
-        resultCompanyName: result.data["company_name"],
-        resultPastCompanyName: result.data["past_companies"],
-        resultJob: result.data.job,
-        resultTechStack: result.data.techStack,
-        resultYearsExp: result.data["year_exp"],
-      }));
+    axios.post("/api/search", searchInfo).then((data) => {
+      console.log("data: ", data.data);
+      setResults([...data.data]);
+      return console.log("results state: ", results);
     });
   };
 
@@ -241,17 +233,14 @@ const Search: React.FC = () => {
    */
   const renderTableHeader = () => {
     const headerElement = [
-      "",
       "First Name",
       "Last Name",
       "City",
       "State",
       "Country",
       "Current Company",
-      "Past Company",
       "Job Position",
       "Years of Experience",
-      "Tech Stack",
     ];
 
     return headerElement.map((element, index) => {
@@ -269,20 +258,17 @@ const Search: React.FC = () => {
    * the content drawn from each element in the iterated array
    */
   const renderTableBody = () => {
-    return resultArray.usersArray.map((userObj) => {
+    return results.map((userObj) => {
       return (
         <tr>
-          <td>{userObj.resultProfilePic}</td>
-          <td>{userObj.resultFirstName}</td>
-          <td>{userObj.resultLastName}</td>
-          <td>{userObj.resultCity}</td>
-          <td>{userObj.resultState}</td>
-          <td>{userObj.resultCountry}</td>
-          <td>{userObj.resultCompanyName}</td>
-          <td>{userObj.resultPastCompanyName}</td>
-          <td>{userObj.resultJob}</td>
-          <td>{userObj.resultYearsExp}</td>
-          <td>{userObj.resultTechStack}</td>
+          <td>{userObj.firstname}</td>
+          <td>{userObj.lastname}</td>
+          <td>{userObj.city}</td>
+          <td>{userObj.state}</td>
+          <td>{userObj.country}</td>
+          <td>{userObj["company_name"]}</td>
+          <td>{userObj.job}</td>
+          <td>{userObj["years_exp"]}</td>
         </tr>
       );
     });

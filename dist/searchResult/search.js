@@ -59,6 +59,7 @@ const Search = () => {
         resultTechStack: "",
         resultYearsExp: 0,
     });
+    const [results, setResults] = react_1.useState([]);
     const [dropDownOptions, setDropDownOptions] = react_1.useState({
         optionsCompany: [],
         optionsJob: [],
@@ -166,21 +167,10 @@ const Search = () => {
         console.log("Search Button Clicked");
         // NEED TO EDIT THE result.data.(propertynames) => PLACEHOLDERS
         // BASED PLACEHOLDERS OFF OF SQL COLUMN NAMES
-        axios_1.default.post("/search", searchInfo).then((result) => {
-            setResultInfo((prevState) => ({
-                ...prevState,
-                resultProfilePic: result.data["profile_pic"],
-                resultFirstName: result.data.firstname,
-                resultLastName: result.data.lastname,
-                resultCity: result.data.city,
-                resultState: result.data.state,
-                resultCountry: result.data.country,
-                resultCompanyName: result.data["company_name"],
-                resultPastCompanyName: result.data["past_companies"],
-                resultJob: result.data.job,
-                resultTechStack: result.data.techStack,
-                resultYearsExp: result.data["year_exp"],
-            }));
+        axios_1.default.post("/api/search", searchInfo).then((data) => {
+            console.log("data: ", data.data);
+            setResults([...data.data]);
+            return console.log("results state: ", results);
         });
     };
     /**
@@ -189,17 +179,14 @@ const Search = () => {
      */
     const renderTableHeader = () => {
         const headerElement = [
-            "",
             "First Name",
             "Last Name",
             "City",
             "State",
             "Country",
             "Current Company",
-            "Past Company",
             "Job Position",
             "Years of Experience",
-            "Tech Stack",
         ];
         return headerElement.map((element, index) => {
             return react_1.default.createElement("th", { key: index }, element.toUpperCase());
@@ -215,19 +202,16 @@ const Search = () => {
      * the content drawn from each element in the iterated array
      */
     const renderTableBody = () => {
-        return resultArray.usersArray.map((userObj) => {
+        return results.map((userObj) => {
             return (react_1.default.createElement("tr", null,
-                react_1.default.createElement("td", null, userObj.resultProfilePic),
-                react_1.default.createElement("td", null, userObj.resultFirstName),
-                react_1.default.createElement("td", null, userObj.resultLastName),
-                react_1.default.createElement("td", null, userObj.resultCity),
-                react_1.default.createElement("td", null, userObj.resultState),
-                react_1.default.createElement("td", null, userObj.resultCountry),
-                react_1.default.createElement("td", null, userObj.resultCompanyName),
-                react_1.default.createElement("td", null, userObj.resultPastCompanyName),
-                react_1.default.createElement("td", null, userObj.resultJob),
-                react_1.default.createElement("td", null, userObj.resultYearsExp),
-                react_1.default.createElement("td", null, userObj.resultTechStack)));
+                react_1.default.createElement("td", null, userObj.firstname),
+                react_1.default.createElement("td", null, userObj.lastname),
+                react_1.default.createElement("td", null, userObj.city),
+                react_1.default.createElement("td", null, userObj.state),
+                react_1.default.createElement("td", null, userObj.country),
+                react_1.default.createElement("td", null, userObj["company_name"]),
+                react_1.default.createElement("td", null, userObj.job),
+                react_1.default.createElement("td", null, userObj["years_exp"])));
         });
     };
     // Search FC will be rendering the following return statement
