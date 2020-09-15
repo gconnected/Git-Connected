@@ -2,6 +2,9 @@ const path = require("path");
 const db = require("../models/userModels.js");
 const fileController = {};
 
+// Controller to create a new user. It's barebones right now but it's in good hands
+// (yours) to make it better.
+// We trust you. We believe in you. We love you.
 fileController.createUser = (req, res, next) => {
   console.log(req.body);
   const {
@@ -56,6 +59,9 @@ fileController.createUser = (req, res, next) => {
     );
 };
 
+// Method to search for a new user either by company, job, or both. How else are
+// users gonna connect with other brilliant tech folks if they can't find said
+// brilliant tech folks?  Boom. Thank you searchUser for connecting us
 fileController.searchUser = (req, res, next) => {
   console.log(req.query);
   let searched, searchInput;
@@ -94,6 +100,9 @@ fileController.searchUser = (req, res, next) => {
     );
 };
 
+// Method to get everything. This does not exist in front end yet.
+// We made this to test data retrieval, but left it in here
+// out of sheer, unadulterated fun. So. Much. Fun.
 fileController.getEverything = (req, res, next) => {
   const everything = `SELECT * FROM users`;
 
@@ -112,6 +121,8 @@ fileController.getEverything = (req, res, next) => {
     );
 };
 
+// Method to pull company list from postgres user table. This allows users to search
+// for other users by company. Duh. You knew that.
 fileController.getCompanies = (req, res, next) => {
   const getCompanyNames = `SELECT DISTINCT company_name FROM users`;
 
@@ -129,6 +140,10 @@ fileController.getCompanies = (req, res, next) => {
     );
 };
 
+// Surprirse, surprise. This method is called get jobs. Guess what it does?
+// It gets jobs. "You had one job, getJobs!" It's to get jobs.
+// Really, though, this is so front end can show a dropdown menu of jobs for our cherished
+// users to search other users by job title!
 fileController.getJobs = (req, res, next) => {
   const getJobTitles = `SELECT DISTINCT job FROM users`;
 
