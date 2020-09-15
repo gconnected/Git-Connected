@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import UserProfile from "../userProfile/userProfile";
 
 /**Setting type of state and its components.
  * Set to the same shape as the state.
@@ -6,6 +7,10 @@ import React, { useState } from "react";
 interface signUpInfo {
   email: string;
   password: string;
+}
+
+interface componentRenderingInfo {
+	status: string;
 }
 
 /**Creating functional component in react.
@@ -17,7 +22,11 @@ const RegistrationForm: React.FC = (props) => {
   const [signUp, setSignUp] = useState<signUpInfo>({
     email: "", // value has to be string
     password: "", // value has to be string
-  });
+	});
+	
+	const [componentRendering, setComponentRendering] = useState<componentRenderingInfo> ({
+		status: "OFF",
+	});
 
   /**
    * Function to handle event changes in text boxes.
@@ -30,7 +39,7 @@ const RegistrationForm: React.FC = (props) => {
     setSignUp((prevState) => ({
       ...prevState,
       [id]: value,
-    }));
+		}));
   };
 
   /**
@@ -40,41 +49,45 @@ const RegistrationForm: React.FC = (props) => {
    */
   const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault();
-		// INSERT AXIOS REQUEST
-    console.log("success");
+		setComponentRendering({
+			status: "ON"
+		});
   };
 
   return (
     <div className="signup">
-      <form className="loginSignUpFields">
-        {/* Email */}
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter email"
-            value={signUp.email}
-            onChange={handleChange}
-          />
-        {/* Password */}
-        <div>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter Password"
-            value={signUp.password}
-            onChange={handleChange}
-          />
-        </div>
-        {/* Need to add an click function that takes the values of the form and submits it to the server */}
-        <button
-          type="submit"
-					onClick={handleSubmit}
-					className="loginSignUpButtons"
-        >
-          Register
-        </button>
-        {console.log(signUp)}
-      </form>
+			{(componentRendering.status === "ON") ? <UserProfile /> : 
+			<div>
+				<form className="loginSignUpFields">
+					{/* Email */}
+						<input
+							type="email"
+							id="email"
+							placeholder="Enter email"
+							value={signUp.email}
+							onChange={handleChange}
+						/>
+					{/* Password */}
+					<div>
+						<input
+							type="password"
+							id="password"
+							placeholder="Enter Password"
+							value={signUp.password}
+							onChange={handleChange}
+						/>
+					</div>
+					{/* Need to add an click function that takes the values of the form and submits it to the server */}
+					<button
+						type="submit"
+						onClick={handleSubmit}
+						className="loginSignUpButtons"
+					>
+						Register
+					</button>
+					{console.log(signUp)}
+				</form>
+			</div>}
     </div>
   );
 };

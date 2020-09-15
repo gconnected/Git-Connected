@@ -24,6 +24,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const axios_1 = __importDefault(require("axios"));
+const search_1 = __importDefault(require("../searchResult/search"));
 /** Creating functional component in react.
  * This component uses profile as our state through react hooks
  */
@@ -40,6 +41,9 @@ const UserProfile = () => {
         job: "",
         years_exp: 0,
         profile_pic: "",
+    });
+    const [componentRendering, setComponentRendering] = react_1.useState({
+        status: "OFF",
     });
     /**
      * Function to handle event changes in text boxes.
@@ -77,24 +81,29 @@ const UserProfile = () => {
             years_exp: 0,
             profile_pic: "",
         });
+        setComponentRendering({
+            status: "ON",
+        });
     };
     return (react_1.default.createElement("div", { id: "createProfileContainer" },
-        react_1.default.createElement("div", { id: "createProfileHeader" },
-            react_1.default.createElement("span", { id: "createProfileIntro" }, "Tell us a little more about yourself...")),
-        react_1.default.createElement("div", null,
-            react_1.default.createElement("form", { id: "createProfileForm" },
-                react_1.default.createElement("input", { type: "firstname", id: "firstname", placeholder: "First Name", value: profile.firstname, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "lastname", id: "lastname", placeholder: "Last Name", value: profile.lastname, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "birthdate", id: "birthdate", placeholder: "Birth Date - MM/DD/YYYY", value: profile.birthdate, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "city", id: "city", placeholder: "City", value: profile.city, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "state", className: "form-control", id: "state", placeholder: "State", value: profile.state, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "country", id: "country", placeholder: "Country", value: profile.country, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "company_name", id: "company_name", placeholder: "Company", value: profile.company_name, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "job", id: "job", placeholder: "Job", value: profile.job, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "years_exp", id: "years_exp", placeholder: "Years of Experience", value: profile.years_exp, onChange: handleChange }),
-                react_1.default.createElement("input", { type: "profile_pic", id: "profile_pic", placeholder: "Profile Picture - URL", value: profile.profile_pic, onChange: handleChange }))),
-        react_1.default.createElement("div", { id: "createButtonContainer" },
-            react_1.default.createElement("button", { type: "submit", onClick: handleSubmit, id: "createButton", form: "createProfileForm" }, "Git Connected!")),
+        (componentRendering.status === "ON") ? react_1.default.createElement(search_1.default, null) :
+            react_1.default.createElement("div", null,
+                react_1.default.createElement("div", { id: "createProfileHeader" },
+                    react_1.default.createElement("span", { id: "createProfileIntro" }, "Tell us a little more about yourself...")),
+                react_1.default.createElement("div", null,
+                    react_1.default.createElement("form", { id: "createProfileForm" },
+                        react_1.default.createElement("input", { type: "firstname", id: "firstname", placeholder: "First Name", value: profile.firstname, onChange: handleChange }),
+                        react_1.default.createElement("input", { type: "lastname", id: "lastname", placeholder: "Last Name", value: profile.lastname, onChange: handleChange }),
+                        react_1.default.createElement("input", { type: "birthdate", id: "birthdate", placeholder: "Birth Date", value: profile.birthdate, onChange: handleChange }),
+                        react_1.default.createElement("input", { type: "city", id: "city", placeholder: "City", value: profile.city, onChange: handleChange }),
+                        react_1.default.createElement("input", { type: "state", className: "form-control", id: "state", placeholder: "State", value: profile.state, onChange: handleChange }),
+                        react_1.default.createElement("input", { type: "country", id: "country", placeholder: "Country", value: profile.country, onChange: handleChange }),
+                        react_1.default.createElement("input", { type: "company_name", id: "company_name", placeholder: "Company", value: profile.company_name, onChange: handleChange }),
+                        react_1.default.createElement("input", { type: "job", id: "job", placeholder: "Job", value: profile.job, onChange: handleChange }),
+                        react_1.default.createElement("input", { type: "years_exp", id: "years_exp", placeholder: "Years Experience", value: profile.years_exp, onChange: handleChange }),
+                        react_1.default.createElement("input", { type: "profile_pic", id: "profile_pic", placeholder: "Profile Picture", value: profile.profile_pic, onChange: handleChange }))),
+                react_1.default.createElement("div", { id: "createButtonContainer" },
+                    react_1.default.createElement("button", { type: "submit", onClick: handleSubmit, id: "createButton", form: "createProfileForm" }, "Git Connected!"))),
         console.log(profile)));
 };
 exports.default = UserProfile;

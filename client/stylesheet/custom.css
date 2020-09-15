@@ -17,37 +17,41 @@ img {
 
 #gitConnected  {
 	font-family: 'Rubik Mono One', sans-serif;
-	margin-top: 15px;
+	margin: 15px 0 -20px 0;
 	font-size: 17pt;
 	color: #1eefd7;
 }
 
+#tagline {
+	display: flex;
+	justify-content: center;
+	font-family: 'Rubik Mono One', sans-serif;
+	color: #ffffff;
+	margin: 0 auto;
+}
+
 nav {
 	background-image: rgba(0, 0, 0, 0);
-	height: 100px;
+	height: 70px;
 }
 
 .nav-bar-div {
 	display: flex;
 	justify-content: center;
-	height: 100px;
+	height: 70px;
 }
 
 #loginSignUpContainer {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	margin: 80px 0 0 0;
 }
 
 .login {
 	display: flex;
 	flex-direction: column;
 	align-content: center;
-	margin: 0 25px 0 0;
-}
-
-.signUp {
-	margin: 0 0 0 25px;
 }
 
 input {
@@ -99,13 +103,16 @@ button {
 }
 
 #createProfileHeader {
+	display: flex;
 	margin: 50px auto 25px auto;
 }
 
 #createProfileIntro {
+	display: flex;
 	font-family: 'Rubik Mono One', sans-serif;
 	color: #1eefd7;
 	font-size: 14pt;
+	margin: 0 auto;
 }
 
 #createProfileForm {
@@ -118,7 +125,8 @@ button {
 }
 
 #createButtonContainer {
-	margin: 0 auto;
+	display: flex;
+	justify-content: center;
 }
 
 #createButton {
@@ -203,4 +211,12 @@ input[type=reset] {
 	border-radius: 2px;
 	margin: 0 0 0 5px;
 	height: 33px;
+}
+
+#buttonGroup {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 200px;
+	margin: 80px auto 0 auto;
 }
