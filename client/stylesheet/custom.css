@@ -17,37 +17,41 @@ img {
 
 #gitConnected  {
 	font-family: 'Rubik Mono One', sans-serif;
-	margin-top: 15px;
+	margin: 15px 0 -20px 0;
 	font-size: 17pt;
 	color: #1eefd7;
 }
 
+#tagline {
+	display: flex;
+	justify-content: center;
+	font-family: 'Rubik Mono One', sans-serif;
+	color: #ffffff;
+	margin: 0 auto;
+}
+
 nav {
 	background-image: rgba(0, 0, 0, 0);
-	height: 100px;
+	height: 70px;
 }
 
 .nav-bar-div {
 	display: flex;
 	justify-content: center;
-	height: 100px;
+	height: 70px;
 }
 
 #loginSignUpContainer {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	margin: 80px 0 0 0;
 }
 
 .login {
 	display: flex;
 	flex-direction: column;
 	align-content: center;
-	margin: 0 25px 0 0;
-}
-
-.signUp {
-	margin: 0 0 0 25px;
 }
 
 input {
@@ -55,6 +59,7 @@ input {
 	margin: 5px;
 	text-align: center;
 	border: none;
+	width: 200px;
 }
 
 .loginSignUpFields {
@@ -98,13 +103,16 @@ button {
 }
 
 #createProfileHeader {
+	display: flex;
 	margin: 50px auto 25px auto;
 }
 
 #createProfileIntro {
+	display: flex;
 	font-family: 'Rubik Mono One', sans-serif;
 	color: #1eefd7;
 	font-size: 14pt;
+	margin: 0 auto;
 }
 
 #createProfileForm {
@@ -117,7 +125,8 @@ button {
 }
 
 #createButtonContainer {
-	margin: 0 auto;
+	display: flex;
+	justify-content: center;
 }
 
 #createButton {
@@ -129,4 +138,85 @@ button {
 
 input:focus {
 	background-color: #c0fff8;
+}
+
+#outerSearchContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 50px 0 0 0;
+}
+
+#innerSearchContainer {
+	display: flex;
+	margin: 0 auto;
+}
+
+#resultsContainer {
+	display: flex;
+}
+
+#resultTable {
+	text-align: center;
+	margin: 50px auto 0 auto;
+	font-family: 'Rubik Mono One', sans-serif;
+	border-radius: 3px;
+	width: 80%;
+}
+
+#resultTable th {
+	background-color: #1eefd7;
+	color: #6513b2;
+	padding: 10px;
+}
+
+#resultTable tr {
+	background-color: #ffffff;
+	color: #6513b2;
+}
+
+#resultTable td {
+	padding: 20px 10px;
+}
+
+#searchCompany {
+	margin: 0 5px 0 0;
+	height: 32.5px;
+}
+
+#searchJob {
+	margin: 0 20px 0 5px;
+	height: 32.5px;
+}
+
+input[type=submit] {
+	padding: 5px 10px;
+	background-color: #1eefd7;
+	color: #6513b2;
+	font-family: 'Rubik Mono One', sans-serif;
+	font-size: 10pt;
+	border: none;
+	border-radius: 2px;
+	margin: 0 5px 0 0;
+	height: 33px;
+}
+
+input[type=reset] {
+	padding: 5px 10px;
+	background-color: #6513b2;
+	color: #1eefd7;
+	font-family: 'Rubik Mono One', sans-serif;
+	font-size: 10pt;
+	border: #1eefd7 solid 1px;
+	border-radius: 2px;
+	margin: 0 0 0 5px;
+	height: 33px;
+}
+
+#buttonGroup {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 200px;
+	margin: 80px auto 0 auto;
 }

@@ -63,6 +63,10 @@ interface dropDownOptions {
   optionsJob: Array<any>;
 }
 
+interface componentRenderingInfo {
+	status: string;
+}
+
 /**
  * TS: React.FC => it is a label to confirm that our Search Function is a React Functional Component
  */
@@ -104,7 +108,11 @@ const Search: React.FC = () => {
   const [dropDownOptions, setDropDownOptions] = useState<dropDownOptions>({
     optionsCompany: [],
     optionsJob: [],
-  });
+	});
+
+	const [componentRendering, setComponentRendering] = useState<componentRenderingInfo> ({
+		status: "OFF",
+	});
 
   // Runs just like componentDidMount but a lot more flexible
   useEffect(() => {
@@ -224,9 +232,12 @@ const Search: React.FC = () => {
       console.log("data: ", data.data);
       setResults([...data.data]);
       return console.log("results state: ", results);
-    });
-  };
-
+		});
+		setComponentRendering({
+			status: "ON",
+		})
+	};
+	
   /**
    * Quick Table Header render function using the map method, so that
    * our code remains DRY
@@ -278,18 +289,15 @@ const Search: React.FC = () => {
   return (
     <div
       id="outerSearchContainer"
-      className="container mt-3 d-flex justify-content-center flex-column"
     >
       {/* Search Container */}
       <div
         id="innerSearchContainer"
-        className="container mt-3 d-flex justify-content-center"
       >
         {/* Form Tag that has an onSubmit attribute that will take all our select tag values once the submit input tag has been clicked on */}
         <form
           id="searchBar"
           onSubmit={searchStart}
-          className="d-flex justify-content-center flex-column"
         >
           {/* Company Name from Database */}
           <select
@@ -297,7 +305,6 @@ const Search: React.FC = () => {
             id="searchCompany"
             onChange={companyChange}
             defaultValue="Company"
-            className="custom-select mb-3"
           >
             <option value="" hidden>
               Company
@@ -311,7 +318,6 @@ const Search: React.FC = () => {
             id="searchJob"
             onChange={jobChange}
             defaultValue="Job Position"
-            className="custom-select mb-3"
           >
             <option value="" hidden>
               Job Position
@@ -322,24 +328,24 @@ const Search: React.FC = () => {
           <input
             type="submit"
             id="searchButton"
-            className="btn mb-3 btn-success"
             value="Search"
           />
           {/* Reset Input tag that will change all the select values back to default */}
-          <input type="reset" id="resetButton" className="btn mb-5" />
+          <input type="reset" id="resetButton"/>
           {console.log(searchInfo)}
         </form>
         {/* NEED TO INSERT SOME CONDITIONAL LOGIC, ONCE WE GET A SUCCESSFUL RESPONSE FROM OUR AXIOS POST REQUEST FROM OUR SEARCHSTART FUNCTION AROUND LINE 90 */}
       </div>
-      {/* Results Container */}
-      <div id="resultsContainer" className="d-flex justify-content-center">
-        <table id="resultTable" className="table table-hover">
-          <thead className="thead-dark text-center">
-            {renderTableHeader()}
-          </thead>
-          <tbody className="text-center">{renderTableBody()}</tbody>
-        </table>
-      </div>
+			{/* Results Container */}
+			{(componentRendering.status === "ON") ? 
+				<div id="resultsContainer">
+					<table id="resultTable">
+						<thead>
+							{renderTableHeader()}
+						</thead>
+						<tbody>{renderTableBody()}</tbody>
+					</table>
+				</div> : null}
     </div>
   );
 };

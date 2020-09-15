@@ -11,6 +11,9 @@ const Header: React.FC = () => {
       <div className="nav-bar-div">
         <span id="gitConnected">gitConnected.</span>
       </div>
+			<div id="taglineContainer">
+				<p id="tagline">1-on-1 Networking for Tech Professionals</p>
+			</div>
     </nav>
   );
 };

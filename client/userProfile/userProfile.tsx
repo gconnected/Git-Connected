@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Search from "../searchResult/search";
 
-/**Setting type of state and its components.
+/** Setting type of state and its components.
  * Set to the same shape as the state.
  */
 interface profileInfo {
@@ -17,7 +18,11 @@ interface profileInfo {
   profile_pic: any;
 }
 
-/**Creating functional component in react.
+interface componentRenderingInfo {
+	status: string;
+}
+
+/** Creating functional component in react.
  * This component uses profile as our state through react hooks
  */
 const UserProfile: React.FC = () => {
@@ -33,7 +38,11 @@ const UserProfile: React.FC = () => {
     job: "",
     years_exp: 0,
     profile_pic: "",
-  });
+	});
+	
+	const [componentRendering, setComponentRendering] = useState<componentRenderingInfo> ({
+		status: "OFF",
+	});
 
   /**
    * Function to handle event changes in text boxes.
@@ -71,111 +80,118 @@ const UserProfile: React.FC = () => {
       job: "",
       years_exp: 0,
       profile_pic: "",
-    });
+		});
+		setComponentRendering({
+			status: "ON",
+		})
   };
 
   return (
     <div id="createProfileContainer">
-      <div id="createProfileHeader">
-        <span id="createProfileIntro">
-          Tell us a little more about yourself...
-        </span>
-      </div>
-      <div>
-        <form id="createProfileForm">
-          {/* First Name */}
-          <input
-            type="firstname"
-            id="firstname"
-            placeholder="First Name"
-            value={profile.firstname}
-            onChange={handleChange}
-          />
-          {/* Last Name */}
-          <input
-            type="lastname"
-            id="lastname"
-            placeholder="Last Name"
-            value={profile.lastname}
-            onChange={handleChange}
-          />
-          {/* Birth Date */}
-          <input
-            type="birthdate"
-            id="birthdate"
-            placeholder="Birth Date"
-            value={profile.birthdate}
-            onChange={handleChange}
-          />
-          {/* City */}
-          <input
-            type="city"
-            id="city"
-            placeholder="City"
-            value={profile.city}
-            onChange={handleChange}
-          />
-          {/* State */}
-          <input
-            type="state"
-            className="form-control"
-            id="state"
-            placeholder="State"
-            value={profile.state}
-            onChange={handleChange}
-          />
-          {/* Country */}
-          <input
-            type="country"
-            id="country"
-            placeholder="Country"
-            value={profile.country}
-            onChange={handleChange}
-          />
-          {/* Company */}
-          <input
-            type="company_name"
-            id="company_name"
-            placeholder="Company"
-            value={profile.company_name}
-            onChange={handleChange}
-          />
-          {/* Job */}
-          <input
-            type="job"
-            id="job"
-            placeholder="Job"
-            value={profile.job}
-            onChange={handleChange}
-          />
-          {/* Years Experience */}
-          <input
-            type="years_exp"
-            id="years_exp"
-            placeholder="Years Experience"
-            value={profile.years_exp}
-            onChange={handleChange}
-          />
-          {/* Profile Picture */}
-          <input
-            type="profile_pic"
-            id="profile_pic"
-            placeholder="Profile Picture"
-            value={profile.profile_pic}
-            onChange={handleChange}
-          />
-        </form>
-      </div>
-      <div id="createButtonContainer">
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          id="createButton"
-          form="createProfileForm"
-        >
-          Git Connected!
-        </button>
-      </div>
+			{(componentRendering.status === "ON") ? <Search /> :
+			<div>
+				<div id="createProfileHeader">
+					<span id="createProfileIntro">
+						Tell us a little more about yourself...
+					</span>
+				</div>
+				<div>
+					<form id="createProfileForm">
+						{/* First Name */}
+						<input
+							type="firstname"
+							id="firstname"
+							placeholder="First Name"
+							value={profile.firstname}
+							onChange={handleChange}
+						/>
+						{/* Last Name */}
+						<input
+							type="lastname"
+							id="lastname"
+							placeholder="Last Name"
+							value={profile.lastname}
+							onChange={handleChange}
+						/>
+						{/* Birth Date */}
+						<input
+							type="birthdate"
+							id="birthdate"
+							placeholder="Birth Date"
+							value={profile.birthdate}
+							onChange={handleChange}
+						/>
+						{/* City */}
+						<input
+							type="city"
+							id="city"
+							placeholder="City"
+							value={profile.city}
+							onChange={handleChange}
+						/>
+						{/* State */}
+						<input
+							type="state"
+							className="form-control"
+							id="state"
+							placeholder="State"
+							value={profile.state}
+							onChange={handleChange}
+						/>
+						{/* Country */}
+						<input
+							type="country"
+							id="country"
+							placeholder="Country"
+							value={profile.country}
+							onChange={handleChange}
+						/>
+						{/* Company */}
+						<input
+							type="company_name"
+							id="company_name"
+							placeholder="Company"
+							value={profile.company_name}
+							onChange={handleChange}
+						/>
+						{/* Job */}
+						<input
+							type="job"
+							id="job"
+							placeholder="Job"
+							value={profile.job}
+							onChange={handleChange}
+						/>
+						{/* Years Experience */}
+						<input
+							type="years_exp"
+							id="years_exp"
+							placeholder="Years Experience"
+							value={profile.years_exp}
+							onChange={handleChange}
+						/>
+						{/* Profile Picture */}
+						<input
+							type="profile_pic"
+							id="profile_pic"
+							placeholder="Profile Picture"
+							value={profile.profile_pic}
+							onChange={handleChange}
+						/>
+					</form>
+				</div>
+				<div id="createButtonContainer">
+					<button
+						type="submit"
+						onClick={handleSubmit}
+						id="createButton"
+						form="createProfileForm"
+					>
+						Git Connected!
+					</button>
+				</div>
+			</div>
+			}
       {console.log(profile)}
     </div>
   );

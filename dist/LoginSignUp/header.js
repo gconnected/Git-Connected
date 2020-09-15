@@ -13,6 +13,8 @@ const Header = () => {
     // Bootstrap Navbar
     react_1.default.createElement("nav", null,
         react_1.default.createElement("div", { className: "nav-bar-div" },
-            react_1.default.createElement("span", { id: "gitConnected" }, "gitConnected."))));
+            react_1.default.createElement("span", { id: "gitConnected" }, "gitConnected.")),
+        react_1.default.createElement("div", { id: "taglineContainer" },
+            react_1.default.createElement("p", { id: "tagline" }, "1-on-1 Networking for Tech Professionals"))));
 };
 exports.default = Header;
