@@ -4,9 +4,22 @@
 
 <br>
 
+## Overview
+In the era of covid, the opportunity to network professionally has been significantly diminished. Networking events, conferences, talks, workshops, meetups, informational interviews, hackathons, etc. all have moved online or have completely disappeared in 2020. These online events are great, but they are not just the same when it comes to professional networking. There is no longer a way to meet like-minded people who are actually interested in meeting us to help us grow ourselves and our networks.
+
+That’s why we created GitConnected. What sets GitConnected apart from other apps like LinkedIn is everyone who signs up is an active participant: they all want to meet other like-minded people. How many times have you sent or received a connection request on LinkedIn from a complete stranger who you never hear from again? To get connected, users create profiles and log in to search people they’re interested in meeting, just like we already do on LinkedIn, however, unlike LinkedIn, people on GitConnected actually want to meet and network with you. 
+
+We want to bring 1-on-1 professional networking online and help people connect through genuine, authentic meetings based on professional backgrounds, interests and aspirations.
+
+We’ve set up the basic database for users, companies, and tech interests. We want people to be able to connect with people based on tech interests: say, someone is interested in meeting a product designer in the financial technology industry or a software engineer in the blockchain industry. 
+
+Our current features are just creating a user profile and searching people based on jobs and/or companies. 
+
+<br>
+
 ## Beta Stage
 
-Team Git Connected will strive to continuously release updates and additional features.
+Team GitConnected will strive to continuously release updates and additional features.
 
 1. If you would like to contribute to this project:
 
@@ -19,7 +32,7 @@ Team Git Connected will strive to continuously release updates and additional fe
 
 ## Getting Started
 
-1.  Clone Git Connected to your local machine and point to the Git-Connected directory:
+1.  Clone GitConnected to your local machine and point to the Git-Connected directory:
 
         git clone https://github.com/gconnected/Git-Connected.git
 
