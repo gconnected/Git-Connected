@@ -43,7 +43,7 @@ Team GitConnected will strive to continuously release updates and additional fea
 
         npm install
 
-3.  Run the following script to open Git Connected on http://localhost:8080:
+3.  Run the following script to open GitConnected on http://localhost:8080:
 
         npm run dev
 
@@ -53,14 +53,14 @@ Team GitConnected will strive to continuously release updates and additional fea
 
 ### User Register / Login Landing Page
 
-Users will be greeted with a landing page that will allow first-time users to register an account or returning users to login to access Git Connected's features.
+Users will be greeted with a landing page that will allow first-time users to register an account or returning users to login to access GitConnected's features.
 
 <div align="center">
 <img src="./client/assets/login.gif" width=500px>
 </div>
 <br>
 
-First-time users that register on Git Connected will be led to a profile setup page that will request the user to input their information so that their data can be stored in the database. This will allow other networking professionals to be able to search for the new user from the Search Bar Page.
+First-time users that register on GitConnected will be led to a profile setup page that will request the user to input their information so that their data can be stored in the database. This will allow other networking professionals to be able to search for the new user from the Search Bar Page.
 
 <div align="center">
 <img src="./client/assets/register.gif" width=500px>
