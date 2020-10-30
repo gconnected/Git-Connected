@@ -81,7 +81,7 @@ const Search: React.FC = () => {
    */
   const [searchInfo, setSearchInfo] = useState<searchInfo>({
     searchCompany: "",
-    searchJob: "",
+    searchJob: 10,
   });
 
   const [resultArray, setResultArray] = useState<resultArray>({
