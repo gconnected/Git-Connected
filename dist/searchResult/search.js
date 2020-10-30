@@ -40,7 +40,7 @@ const Search = () => {
      */
     const [searchInfo, setSearchInfo] = react_1.useState({
         searchCompany: "",
-        searchJob: "",
+        searchJob: 10,
     });
     const [resultArray, setResultArray] = react_1.useState({
         usersArray: [],
